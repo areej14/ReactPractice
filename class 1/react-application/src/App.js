@@ -1,13 +1,12 @@
-// import Class2 from './ClassTasks/Class2';
-import Class3 from './ClassTasks/Class3';
+import Class4 from './ClassTasks/Class4';
 
 
 function App() {
   return (
     
        <>
-       {/* <Class2/> */}
-       <Class3/>
+       
+       <Class4/>
       </>
   );
 }
