@@ -1,32 +1,31 @@
 import React from "react";
 import "./App.css";
-import pic from "./pic.jpg";
+import List from './data.js'
 
-function App() {
-  //Array
-  const subject = [
-    {
-      n: "C++", sem: "1st semester",
-    },
-    { n: "Sys pro", sem: "5th semester" },
-  ];
-  //Object
- const fruit= {
-    fruit1: 'apple',
-    fruit2:'Orange'
-  }
-  fruit.fruit2="Mango"
-  
+const App = () => {
+   
   return (
-    <>
+    <div>
+    <h2>IMAGE GALLERY</h2>
       <div className="body">
-      <h1 className="heading">By Areej Amjad</h1>
-      <img className="image" src={pic} alt=" " /><br/>
-      <h2>  {fruit.fruit2} is a fruit.</h2>
-    <b> { subject.map(i => ( i.n + ' studied in ' + i.sem + " "))}</b>
-    </div>
-    </>
-  );
+        
+           {List.map((item,i) =>(
+          <div key={i} className="card cardb" style={{"width": "18rem"}}>
+            <h3> Person {item.id}</h3>
+          <img className="card-img-top image" src={item.image} alt="Card  cap" />
+          <div className="card-body">
+            <h4 className="card-title"><mark>{item.name}</mark></h4>
+            <p className="card-text"><mark>My age is {item.age}</mark></p>
+          </div>
+        </div>
+        
+))} 
+
+      </div>
+      </div>
+  )
 }
 
-export default App;
+export default App
+
+

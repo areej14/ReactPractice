@@ -1,19 +1,39 @@
-  h2,h4{
+  h2,h4,h3{
     text-align: center;
-    
+    color: purple;
+    background-color:rgb(187, 182, 187);
+    padding: 5px;
   }
- 
+  mark{
+    color: purple;
+    background-color:rgb(187, 182, 187);
+  }
   .image{
     text-align: center;
-    width: 200px;
-   height: 200px;
+    margin: auto;
+    padding:10px;
+    background-color: rgb(235, 235, 224);
+   box-shadow: 5px 5px rgb(212, 198, 212);
+   width: 190px;
+   height: 190px;
    border-radius: 100px;
 
   }
-  
+  .cardb{
+    text-align: center;
+    margin: 10px auto;
+    padding:10px;
+    border-radius: 10px;
+    background-color: rgb(235, 235, 224);
+   box-shadow: 5px 5px rgb(158, 139, 158);
+
+  }
 
 .body{
   
   text-align:center;
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
   
 }
