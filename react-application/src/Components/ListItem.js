@@ -4,7 +4,7 @@ const ListItem = (props) => {
    const {items} = props;
     console.log(props);
     return (
-        <div className="list">
+       
         
             <div className="body">
           
@@ -21,7 +21,7 @@ const ListItem = (props) => {
 
 
      </div>
-     </div>
+     
      
  )
           }
