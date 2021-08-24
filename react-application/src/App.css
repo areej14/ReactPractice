@@ -1,19 +1,22 @@
   h2,h4{
     text-align: center;
     color: rgb(20, 19, 20);
-    background-color:rgb(58, 49, 133);
+    background-color:rgb(67, 163, 192);
     padding: 5px;
   }
   mark{
     color: rgb(11, 11, 12);
     background-color:rgb(180, 179, 192);
+    border: 1px solid rgb(191, 225, 253);
+    padding: 5px;
+    margin-bottom: 5px;
   }
   .image{
     text-align: center;
     margin: auto;
     padding:10px;
     
-   box-shadow: 5px 5px rgb(101, 95, 136);
+   /* box-shadow: 5px 5px rgb(101, 95, 136); */
    width: 250px;
    height: 250px;
    /* border-radius: 100px; */
@@ -21,18 +24,20 @@
   }
   .cardb{
     
-    
-    padding:10px;
+    text-align:center;
+    margin: 25px;
+    padding: 15px;
     border-radius: 10px;
-    background-color: rgb(194, 197, 202);
-    box-shadow: 5px 5px rgb(101, 95, 136);
+    background-color: rgb(214, 214, 236);
+    box-shadow: 5px 5px rgb(169, 198, 241);
   }
 
 .body{
+ 
   
- text-align: center;
- display: inline-flex;
- margin: 22px;
-  
+  display:flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
   
 } 

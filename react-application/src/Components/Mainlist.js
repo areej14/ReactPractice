@@ -4,7 +4,7 @@ import "../App.css"
 import ListItem from './ListItem'
 const Mainlist = () => {
     return (
-        <div>
+        <div className="body">
             {List.map((item,i) =><ListItem items={item} key={i}/>)}
         </div>
     )
