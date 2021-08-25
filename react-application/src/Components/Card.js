@@ -1,6 +1,6 @@
 import React from 'react'
 import "../App.css"
-const ListItem = (props) => {
+const Card = (props) => {
  
    const {items} = props;
    return (
@@ -31,4 +31,4 @@ const ListItem = (props) => {
        
    
 
-export default ListItem
+export default Card

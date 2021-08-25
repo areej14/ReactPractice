@@ -1,8 +1,8 @@
 import React from 'react'
 import List from './newData.jsx'
 import "../App.css"
-import ListItem from './ListItem'
-const Mainlist = () => {
+import ListItem from './Card'
+const Cardmap = () => {
     return (
         <div className="body">
             {List.map((item,i) =><ListItem items={item} key={i}/>)}
@@ -10,4 +10,4 @@ const Mainlist = () => {
     )
 }
 
-export default Mainlist
+export default Cardmap
