@@ -1,16 +1,24 @@
 import React from "react";
-import "./App.css";
-import Header from "./Components/Header"
-import Cardmap from "./Components/Cardmap"
-
+// import "./App.css";
+import ClassComponent from './ClassComponent'
 function App() {
- 
+ const showName = ()=>{
+    alert(name)
+  }
+    const name = "Areej Amjad"
+  const email ="areejamjad@gmail.com"
+  const object = {name,email,showName}
+  const array = ["Lahore", "FSD" , "SKP", "Multan",{object}]
+  console.log(array)
+  
+
   return (
-    <>
-     {Header}
-     <Cardmap/>
-    </>
+    <div className="App">
+      <ClassComponent  arr={array} />
+    </div>
   );
 }
+    
+  
 
 export default App;
