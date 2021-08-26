@@ -4,10 +4,29 @@ import React, { Component } from 'react'
 export class ClassComponent extends Component {
   
     render() {
-     const { arr:[a,b,c,d ,{object: {name,email,showName}} ] }  = this.props;
-//   console.log(a,b,c,d);
-//   const { object :{name,email,showName} } = object;
-//   console.log(name,email,showName);
+        // complete Array destructure + Object rename
+
+        const { arr:[a,b,c,d ,{ object:ahmad}]}=this.props;
+        const {name,email,showName}  = ahmad;
+        
+        // ----------------------------------------------------------------
+        
+        //  destructing only object from array 
+        // const { arr:[,,,,{object:{name,email,showName}}]} = this.props;
+        // console.log(name,email,showName);
+        // --------------------------------------------------------
+
+        // trynig to destructing complete array + object rename in a single line
+        // const { arr:[a,b,c,d,{object: ahmad {name,email,showName}} ] }  = this.props;
+        //   console.log(a,b,c,d);
+        //   const { object :{name,email,showName} } = object;
+        //   console.log(name,email,showName);
+        // -----------------------------------
+
+        // complete array destructing in a singleline
+
+    //  const { arr:[a,b,c,d ,{object:{name,email,showName}} ] }  = this.props;
+
  
 console.log(this.props)
 

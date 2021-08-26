@@ -14,8 +14,8 @@ function App() {
 
   return (
     <div className="App">
-      <ClassComponent  arr={array} />
-    </div>
+   <ClassComponent  arr={array} />
+     </div>
   );
 }
     
