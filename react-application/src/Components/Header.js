@@ -1,2 +1,14 @@
- const Header = <h2>IMAGE GALLERY</h2>
- export default Header;
+ 
+ import React from 'react'
+ 
+ function Header() {
+     return (
+         <div>
+              <h2>IMAGE GALLERY</h2>
+ 
+         </div>
+     )
+ }
+ 
+ export default Header
+ 
