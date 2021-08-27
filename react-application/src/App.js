@@ -9,7 +9,7 @@ function App() {
   const email ="areejamjad@gmail.com"
   const object = {name,email,showName}
   const array = ["Lahore", "FSD" , "SKP", "Multan",{object}]
-  console.log(array)
+
   
 
   return (
