@@ -7,7 +7,7 @@ import Card from './Card'
 const Cardmap = () => {
     return (
         <div className="body">
-            {List.map((item,i) =><Card items={item} key={i}/>)}
+            {List.map((item,i) =><Card items={item} student="areej" key={i}/>)}
         </div>
     )
 }

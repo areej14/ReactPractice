@@ -4,7 +4,7 @@
         "title": "Nike Shoes 01",
         "src":"https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/zjp8fptkt8xvzszzmskz/air-monarch-iv-mens-training-shoes-lPtRrS.png",
         "content": "Out of Stock",
-        "price": 23,
+        "price": 20,
       
     },
     {
