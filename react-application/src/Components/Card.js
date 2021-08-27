@@ -25,6 +25,8 @@ const Card = ({items :{title,src,price,content}}) => {
  )
           }
        
-          Card.propTypes= {price: PropTypes.number} 
+          Card.propTypes= {
+            price: PropTypes.string
+          }; 
 
 export default Card
