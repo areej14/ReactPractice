@@ -13,9 +13,10 @@ function App() {
   
 
   return (
-    <div className="App">
-   <ClassComponent  arr={array} />
-     </div>
+    <>
+     <Header/>
+     <Cardmap/>
+    </>
   );
 }
     
