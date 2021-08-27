@@ -2,6 +2,8 @@ import React from 'react'
 import List from './newData.jsx'
 import "../App.css"
 import Card from './Card'
+
+
 const Cardmap = () => {
     return (
         <div className="body">
@@ -9,5 +11,6 @@ const Cardmap = () => {
         </div>
     )
 }
+
 
 export default Cardmap

@@ -1,8 +1,10 @@
 import React from 'react'
-import "../App.css"
-const Card = (props) => {
+import "../App.css";
+import PropTypes from 'prop-types';
+
+const Card = ({items :{title,src,price,content}}) => {
  
-   const {items :{title,src,price,content}} = props;
+   
    return (
        <>
          <div>
@@ -19,16 +21,10 @@ const Card = (props) => {
       
        </div>
       
-       </>
-       
-
-
-     
-     
-     
+       </>   
  )
           }
        
-   
+          Card.propTypes= {price: PropTypes.number} 
 
 export default Card
