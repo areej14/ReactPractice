@@ -11,7 +11,7 @@ const Card = (props) => {
    return (
        <>
          <div>
-           <h1>{props.student}</h1>
+           
            <div  className="card cardb" style={{"width": "18rem"}}>
            <h4>  {props.title}</h4>
          <img className="card-img-top image" src={props.src} alt="Card  cap" />
@@ -32,8 +32,7 @@ const Card = (props) => {
              title: PropTypes.string,
             src: PropTypes.string,
             content:PropTypes.string,
-            price: PropTypes.number,
-            student: PropTypes.number
+            price: PropTypes.number
             
           }; 
 
