@@ -29,6 +29,7 @@ else{
 }
         
     };
+<<<<<<< Updated upstream
     const Darkmode=()=>{
        if  (lock==false){
           alert("counter is in lock mode")
@@ -58,6 +59,22 @@ else{
             <button   class="btn btn-info  mx-3" onClick={Lock}>{locktext} <i class="fas fa-lock"></i></button><br/>
        
       
+=======
+    // const DarkMode=()=>{
+    //     settheme(style=
+    //         {
+    //         backgroundColor: theme,
+    //     }
+    //     )
+    // }
+    return (
+        <div style={{style="backgroundColor":"black"}}>
+            <Child value={value}/>
+            <button onClick={Add}>Add</button>
+            <button onClick={Del}>Delete</button>
+            <button onClick={DarkMode}>DarkMode</button>
+            <button onClick={Lock}>Lock</button>
+>>>>>>> Stashed changes
         </div>
         </>
     )
