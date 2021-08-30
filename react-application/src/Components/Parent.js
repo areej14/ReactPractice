@@ -1,48 +1,45 @@
 import React,{useState} from 'react'
+import './style.css'
 import Child from './Child'
 function Parent() {
     const [value, setvalue] = useState(0)
-    const [lock, setlock] = useState(true)
-    const [theme, settheme] = useState("black")
-    const [locktext, setlocktext] = useState("Lock")
+    const [lock, setlock] = useState("Lock")
+    const [theme, settheme] = useState("Enable Dark Mode")
+    
+    
     const Add=()=>{
-        console.log('add');
-        (lock)?setvalue(value+1):alert("Counter is in lock mode")
+        (lock==="Lock")?setvalue(value+1):alert("Counter is in Lock Mode")
     };
     const Del=()=>{
-        console.log('del');
         if(value>0||value>1){
-        (lock)?setvalue(value-1):alert("Counter is in lock mode")
+        (lock==="Lock")?setvalue(value-1):alert("Counter is in Lock Mode")
         }
         else
         alert("No is less than 0")
     };
     
     const Lock=()=>{
-        if(lock===true){
-        setlock(false)
-        setlocktext("UnLock")
-}
-else{
-    setlock(true)
-        setlocktext("Lock")
-}
+        (lock==="Lock")?
+        setlock("UnLock"):setlock("Lock")
+        
+
         
     };
-<<<<<<< Updated upstream
+
     const Darkmode=()=>{
-       if  (lock==false){
-          alert("counter is in lock mode")
+       if  (lock==="UnLock"){
+          alert("Counter is in Lock Mode")
        }
-    else{if( theme==='white'){
-        settheme('black')
-        document.body.style.backgroundColor='white';
-        document.body.style.color='black';
+    else{if( theme==='Enable Dark Mode'){
+        settheme('Disable Dark Mode')
+        document.body.style.backgroundColor='black';
+        document.body.style.color='white';
        }
        else{
-           settheme('white')
-            document.body.style.backgroundColor='black';
-            document.body.style.color='white';
+           settheme('Enable Dark Mode')
+           document.body.style.backgroundColor='#f3f0ed94';
+           document.body.style.color='black';
+            
            }
        }}
      
@@ -50,31 +47,14 @@ else{
         <>
         
         <h1 style={{"textAlign":"center"}}><u>COUNTER</u></h1>
-        <div style={{"textAlign":"center","width":"50%","height":"400px", "margin":"10px auto","padding":"10px","borderRadius":"15px", "border":"2px solid grey"}} >
+        <div className="Par" style={{"textAlign":"center","width":"30%","height":"500px", "margin":"auto","padding":"10px","borderRadius":"15px", "border":"2px solid grey"}} >
            
             <Child  value={value}/>
-            <button class="btn btn-success mx-3" onClick={Add}>Add <i class="fas fa-plus-circle"></i></button>
-            <button  class="btn btn-danger  mx-3" onClick={Del}>Del <i class="fas fa-minus-circle"></i></button>
-            <button  class="btn btn-secondary  mx-3" onClick={Darkmode}>DarkMode <i class="fas fa-adjust"></i></button>
-            <button   class="btn btn-info  mx-3" onClick={Lock}>{locktext} <i class="fas fa-lock"></i></button><br/>
-       
-      
-=======
-    // const DarkMode=()=>{
-    //     settheme(style=
-    //         {
-    //         backgroundColor: theme,
-    //     }
-    //     )
-    // }
-    return (
-        <div style={{style="backgroundColor":"black"}}>
-            <Child value={value}/>
-            <button onClick={Add}>Add</button>
-            <button onClick={Del}>Delete</button>
-            <button onClick={DarkMode}>DarkMode</button>
-            <button onClick={Lock}>Lock</button>
->>>>>>> Stashed changes
+            <button className="btn btn-success mx-3 my-3" onClick={Add}>Add <i className="fas fa-plus-circle"></i></button>
+            <button  className="btn btn-danger  mx-3" onClick={Del}>Del <i className="fas fa-minus-circle"></i></button><br/>
+            <button  className="btn btn-secondary  mx-1" onClick={Darkmode}>{theme} <i className="fas fa-adjust"></i></button>
+            <button   className="btn btn-info  mx-3" onClick={Lock}>{lock} <i className="fas fa-lock"></i></button><br/>
+
         </div>
         </>
     )

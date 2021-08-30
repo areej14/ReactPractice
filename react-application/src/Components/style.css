@@ -1,3 +1,7 @@
-button{
-    background-color: rgb(34, 91, 145);
-}
+
+ 
+@media (max-width: 576px)  { 
+    .Par{
+    min-width: 80%;
+       
+ }}
