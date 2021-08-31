@@ -20,10 +20,7 @@ function Parent() {
     
     const Lock=()=>{
         (lock==="Lock")?
-        setlock("UnLock"):setlock("Lock")
-        
-
-        
+        setlock("UnLock"):setlock("Lock")   
     };
 
     const Darkmode=()=>{
