@@ -41,6 +41,42 @@ function Parent() {
        }}
        const Reset=()=>{
         (lock==="Lock")?setvalue(0):alert("Counter is in Lock Mode")
+        const Add=()=>{
+        (lock==="Lock")?setvalue(value+1):alert("Counter is in Lock Mode")
+    };
+    const Del=()=>{
+        if(value>0||value>1){
+        (lock==="Lock")?setvalue(value-1):alert("Counter is in Lock Mode")
+        }
+        else
+        alert("No is less than 0")
+    };
+    
+    const Lock=()=>{
+        (lock==="Lock")?
+        setlock("UnLock"):setlock("Lock")   
+    };
+
+    const Darkmode=()=>{
+       if  (lock==="UnLock"){
+          alert("Counter is in Lock Mode")
+       }
+    else{if( theme==='Enable Dark Mode'){
+        settheme('Disable Dark Mode')
+        document.body.style.backgroundColor='black';
+        document.body.style.color='white';
+       }
+       else{
+           settheme('Enable Dark Mode')
+           document.body.style.backgroundColor='#f3f0ed94';
+           document.body.style.color='black';
+            
+           }
+       }}
+       const Reset=()=>{
+        (lock==="Lock")?setvalue(0):alert("Counter is in Lock Mode")
+    }
+     
     }
      
     return (

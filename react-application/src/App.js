@@ -1,11 +1,11 @@
 
 import './App.css';
-import Parent from './Components/Parent';
+import ClassParent from './Components/ClassParent';
 
 function App() {
   return (
     <>
-    <Parent/>
+    <ClassParent/>
     </>
   );
 }
