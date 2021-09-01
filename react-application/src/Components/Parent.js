@@ -39,6 +39,9 @@ function Parent() {
             
            }
        }}
+       const Reset=()=>{
+        (lock==="Lock")?setvalue(0):alert("Counter is in Lock Mode")
+    }
      
     return (
         <>
@@ -47,11 +50,12 @@ function Parent() {
         <div className="Par" style={{"textAlign":"center","width":"30%","height":"500px", "margin":"auto","padding":"10px","borderRadius":"15px", "border":"2px solid grey"}} >
            
             <Child  value={value}/>
+            <button  className="btn btn-warning mx-2 my-2" onClick={Reset}>Reset</button><br/>
             <button className="btn btn-success mx-3 my-3" onClick={Add}>Add <i className="fas fa-plus-circle"></i></button>
             <button  className="btn btn-danger  mx-3" onClick={Del}>Del <i className="fas fa-minus-circle"></i></button><br/>
             <button  className="btn btn-secondary  mx-1" onClick={Darkmode}>{theme} <i className="fas fa-adjust"></i></button>
             <button   className="btn btn-info  mx-3" onClick={Lock}>{lock} <i className="fas fa-lock"></i></button><br/>
-
+             
         </div>
         </>
     )
