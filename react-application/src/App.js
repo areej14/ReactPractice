@@ -1,11 +1,14 @@
-
-import './App.css';
-import ClassParent from './Components/ClassParent';
+import React from "react";
+import "./App.css";
+import Header from "./Components/Header"
+import Cardmap from "./Components/Cardmap"
 
 function App() {
+ 
   return (
     <>
-    <ClassParent/>
+     {Header}
+     <Cardmap/>
     </>
   );
 }
