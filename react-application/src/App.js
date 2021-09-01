@@ -1,16 +1,12 @@
-import React from "react";
-import "./App.css";
-import Header from "./Components/Header"
-import Cardmap from "./Components/Cardmap"
+import React from 'react'
+import Slider from './Components/Slider'
 
 function App() {
- 
   return (
-    <>
-     {Header}
-     <Cardmap/>
-    </>
-  );
+    <div>
+      <Slider/>
+    </div>
+  )
 }
 
-export default App;
+export default App
