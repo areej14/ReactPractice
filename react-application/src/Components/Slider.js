@@ -4,13 +4,10 @@ function Slider() {
   const [i, seti] = useState(0)
   const Next=()=>{
    (i>=0 && i< array.length-1)?seti(i+1):alert("You are on last image")
-
-  }
+}
   const Pre=()=>{
     (i===0)?alert("You are on first image"):seti(i-1)
-  
-
-  }
+ }
   return (
     <>
     <h1 style={{textAlign: "center"}}>Laptop's Image: {i+1}</h1><hr style={{width: "50%"}}/>
