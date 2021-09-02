@@ -11,16 +11,11 @@ function Parent() {
         (lock==="Lock")?setvalue(value+1):alert("Counter is in Lock Mode")
     };
     const Del=()=>{
-        if(value>0||value>1){
-        (lock==="Lock")?setvalue(value-1):alert("Counter is in Lock Mode")
-        }
-        else
-        alert("No is less than 0")
+        (value>0||value>1)?( (lock==="Lock")?setvalue(value-1):alert("Counter is in Lock Mode")):alert("No is less than 0")
     };
     
     const Lock=()=>{
-        (lock==="Lock")?
-        setlock("UnLock"):setlock("Lock")   
+        (lock==="Lock")?setlock("UnLock"):setlock("Lock")   
     };
 
     const Darkmode=()=>{
@@ -45,11 +40,9 @@ function Parent() {
      
     return (
         <>
-        
         <h1 style={{"textAlign":"center"}}><u>COUNTER</u></h1>
         <div className="Par" style={{"textAlign":"center","width":"30%","height":"500px", "margin":"auto","padding":"10px","borderRadius":"15px", "border":"2px solid grey"}} >
-           
-            <Child  value={value}/>
+           <Child  value={value}/>
             <button  className="btn btn-warning mx-2 my-2" onClick={Reset}>Reset</button><br/>
             <button className="btn btn-success mx-3 my-3" onClick={Add}>Add <i className="fas fa-plus-circle"></i></button>
             <button  className="btn btn-danger  mx-3" onClick={Del}>Del <i className="fas fa-minus-circle"></i></button><br/>
