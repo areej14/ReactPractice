@@ -11,23 +11,15 @@ export default class ClassParent extends Component {
             theme: "Enable Dark Mode"
             }
     }
-    static propTypes = {
-        prop: PropTypes
-    }
      Add=()=>{
         (this.state.lock==="Lock")?this.setState({value:this.state.value+1}):alert("Counter is in Lock Mode")
     };
      Del=()=>{
-        if((this.state.value>0)||(this.state.value>1)){
-        (this.state.lock==="Lock")?this.setState({value: this.state.value-1}):alert("Counter is in Lock Mode")
-        }
-        else
-        alert("No is less than 0")
+        ((this.state.value>0)||(this.state.value>1))?((this.state.lock==="Lock")?this.setState({value: this.state.value-1}):alert("Counter is in Lock Mode")):alert("No is less than 0")
     };
     
     Lock=()=>{
-        (this.state.lock==="Lock")?
-        this.setState({lock:"UnLock"}):this.setState({lock:"Lock"})  
+        (this.state.lock==="Lock")?this.setState({lock:"UnLock"}):this.setState({lock:"Lock"})  
     };
 
      Darkmode=()=>{
@@ -52,7 +44,6 @@ export default class ClassParent extends Component {
     render() {
         return (
             <>
-        
             <h1 style={{"textAlign":"center"}}><u>COUNTER</u></h1>
             <div className="Par" style={{"textAlign":"center","width":"30%","height":"500px", "margin":"auto","padding":"10px","borderRadius":"15px", "border":"2px solid grey"}} >
                
