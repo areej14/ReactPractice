@@ -11,7 +11,7 @@ function Slider() {
   return (
     <>
     <h1 style={{textAlign: "center"}}>Laptop's Image: {i+1}</h1><hr style={{width: "50%"}}/>
-    <div id="carouselExampleControls" style={{color:"black",opacity:"0.9"}} className="carousel slide" data-ride="carousel">
+    <div id="carouselExampleControls" style={{color:"black",opacity:"0.9",height:"500px",}} className="carousel slide" data-ride="carousel">
   <div className="carousel-inner">
     <div className="carousel-item active container">
       {console.log(array[i])}
