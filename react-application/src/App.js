@@ -1,20 +1,13 @@
-import React from 'react'
-import Slider from './Components/Slider'
+import React from "react";
+
+import Cardmap from "./Components/Cardmap";
 
 function App() {
   return (
-<<<<<<< HEAD
-    <div>
-      <Slider/>
-    </div>
-  )
-=======
     <>
-     <Header/>
-     <Cardmap/>
+      <Cardmap />
     </>
   );
->>>>>>> class-5
 }
 
-export default App
+export default App;
