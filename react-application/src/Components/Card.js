@@ -14,8 +14,7 @@ const Card = (props) => {
            <h5 className="card-title"><mark><b>Price: </b>{price} $</mark></h5><hr/><hr/>
            <p className="card-text"><mark><b> {content}</b></mark></p>
          </div>
-        
-       </div>
+         </div>
       
        </div>
       
