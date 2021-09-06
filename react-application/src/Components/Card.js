@@ -10,11 +10,13 @@ const Card = (props) => {
 
       <div>
         <div className="card cardb" style={{ "width": "18rem" }}>
-          <h4>{index + 1}. {title}</h4>
+          <h4>Item {index + 1}</h4>
           <img className="card-img-top image" src={img} alt="Card  cap" />
+          <h4><u>{title}</u></h4>
           <div className="card-body">
-            <h5 className="card-title"><b>Price: </b>{price} $</h5>
-            <p className="card-text"><b> {category}</b><br />{desc}</p>
+            <h4><b><u> {category}</u></b></h4>
+            <h5 className="card-title"><u><b>Price: </b>{price}$</u></h5>
+            <p className="card-text">"{desc}"</p>
           </div>
         </div>
 
