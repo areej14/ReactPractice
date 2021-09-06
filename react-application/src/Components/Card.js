@@ -1,10 +1,11 @@
 import React from 'react'
 import "../App.css"
 const Card = (props) => {
- 
+
    const {items :{title,src,price,content}} = props;
    return (
        <>
+      
          <div>
           
            <div  className="card cardb" style={{"width": "18rem"}}>
