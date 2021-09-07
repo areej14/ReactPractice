@@ -53,7 +53,7 @@ const List =[
         category: 'Breakfast',
         price: 8.99,
         img: 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2020%2F10%2F08%2Fblueberry-pancake-1255787230-2000.jpg',
-        desc: `Carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird. `,
+        desc: `Carry jianbing normcore freegan. Viral single-origin coffee live-edge, belly cloud bread iceland put a bird. `,
       },
       {
         id: 8,

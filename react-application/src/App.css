@@ -29,6 +29,7 @@ h2,h4 {
 .body {
   margin:auto;
   display: flex;
+  
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
