@@ -1,4 +1,4 @@
-const List =[
+const Data =[
     {
         id: 1,
         title: 'Bacon Overflow',
@@ -72,4 +72,4 @@ const List =[
         desc: `Skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
       },
     ];
-export default List;
+export default Data;

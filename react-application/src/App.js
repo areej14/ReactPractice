@@ -1,10 +1,11 @@
 import React from "react";
-import Accordion from "./Components/Accordion";
+import Cardmap from "./Components/Cardmap";
+
 
 function App() {
   return (
     <>
-      <Accordion/>
+      <Cardmap/>
     </>
   );
 }
