@@ -71,5 +71,7 @@ const Data =[
         img: 'https://www.floraandvino.com/wp-content/uploads/2017/08/Strawberry-Avocado-Layer-Shakes-15.jpg',
         desc: `Skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
       },
+      
+  
     ];
 export default Data;

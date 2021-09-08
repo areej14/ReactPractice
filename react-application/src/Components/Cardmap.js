@@ -8,12 +8,13 @@ export default function Cardmap() {
    const category = Data.map((val, i) => val.category)
    console.log(category);
     const arrangeCategory = new Set(category)
+    console.log(arrangeCategory);
     const arrangeData = ['All', ...arrangeCategory]
-    // console.log("new", (arrangeData))
+    console.log(arrangeData)
     const [item, setitem] = useState(Data)
     function desireItem(choice) {
 
-        (choice == 'All') && setitem(Data)
+        (choice == 'All')&& setitem(Data)
 
         const filter = Data.filter((item) => item.category == choice)
         setitem(filter)
