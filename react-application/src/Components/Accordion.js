@@ -16,11 +16,11 @@ export default function Accordion() {
             <h1>Tour Guide</h1>
             <img src="https://www.constructionweekonline.com/cloud/2021/07/07/faisalmosque.jpg" style={{ height: "300px", width: "300px", borderRadius: "100%" }} />
 
-            <div style={{ padding: '25px' }}> {click1 ? (Array[0]) : (Array[0].slice(0,80))}<span onClick={() => setclick1(!click1)}>{click1 ? <i className="fas fa-arrow-up"> Read Less</i> : <i className="fas fa-arrow-down"> Read More</i>}</span>
+            <div style={{ padding: '25px' }}> {click1 ? (Array[0]) : (Array[0].slice(0,80))}<span onClick={() => setclick1(!click1)}>{click1 ? (<a href="#" >Read Less <i className="fas fa-arrow-up"/></a>) :(<a href="#" >... Read More <i className="fas fa-arrow-down"></i></a>)}</span>
 
             </div>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3xDC6JLN7xqV6BT8dT5k_qfNO1SGfs7P4Ow&usqp=CAU" style={{ height: "300px", width: "300px", borderRadius: "100%" }} />
-            <div style={{ padding: '25px' }}> {click2 ? (Array[1]) : (Array[1].slice(0,80))}<span onClick={() => setclick2(!click2)}>{click2 ? <i className="fas fa-arrow-up"> Read Less</i> : <i className="fas fa-arrow-down"> Read More</i>}</span>
+            <div style={{ padding: '25px' }}> {click2 ? (Array[1]) : (Array[1].slice(0,80))}<span onClick={() => setclick2(!click2)}>{click2 ?(<a href="#" >Read Less<i className="fas fa-arrow-up"> Read Less</i></a>) : (<a href="#" >... Read More <i className="fas fa-arrow-down"></i></a>)}</span>
 
             </div>
 
