@@ -26,9 +26,10 @@ export default function Cardmap() {
      <h2>React menu</h2>
      <div className="main">
             <Button category={arrangeData} fun={desireItem} />
+            </div>
             <div className="body"> {item.map((i, k) => <Card items={i} index={k} key={k}/>)}</div>
 
-        </div>
+        
 
 
     </>
