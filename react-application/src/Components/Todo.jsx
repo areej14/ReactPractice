@@ -9,7 +9,7 @@ export default function Todo() {
     }
     const additem = () => {
 
-        setlist([...list, text ])
+        setlist([...list, {task:text ,id:''} ])
         localStorage.setItem('items', JSON.stringify(list));
         console.log(list);
         settext('')
@@ -22,14 +22,26 @@ export default function Todo() {
     }
     const delitem = (deltask) => {
 
-        setlist(list.filter((todoo) => (deltask !== todoo)))
+        setlist(list.filter((todoo) => (deltask !== todoo.id)))
+         }
+    
+         const edititem = (edit,index)=> {
+          const task= prompt("edit this task",edit)
+        //   console.log(edit,task);
+         const newlist=list.map(editlist=>{ if(index===editlist.id)
+            {
+             editlist.task = task
+             console.log(index,editlist.task,editlist.id)
+         }
         
-
-
-    }
+         })
+         setlist(newlist)
+        
+        
+        }
     
     return (
-        <form  className="container my-2" >
+        <div  className="container my-2" >
 
             <h2 style={{ textAlign: 'center' }} > <i className="fas fa-tasks"> My Todo App</i></h2>
             <div className="input-group" style={{ textAlign: 'center', width: '70%', margin: '0 auto' }}>
@@ -39,11 +51,13 @@ export default function Todo() {
             </div>
 
             {list.map((todo, i) => <div style={{ marginLeft: '16%', marginTop: '10px' }} key={i}>
-                <li>{todo}
-                    <button className="btn btn-info mx-2 my-1" onClick={() => delitem(todo)} ><i className="fas fa-minus-square"></i></button>
-                </li>
+                <h3>{todo.id=i+1} {todo.task}
+                <button className="btn btn-info mx-2 my-1" onClick={() => delitem(i+1)} ><i className="fas fa-minus-square"></i></button> 
+                   
+                    <button className="btn btn-info mx-2 my-1" onClick={() => edititem(todo.task,i+1)} ><i className="fas fa-link"></i></button>
+                </h3>
             </div>)}
 
-        </form>
+        </div>
     )
-}
+    }
