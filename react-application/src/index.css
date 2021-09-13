@@ -4,7 +4,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(170, 170, 223);
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+  font-style: italic;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  
  
   
 }

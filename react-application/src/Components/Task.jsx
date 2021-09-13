@@ -10,7 +10,7 @@ function Task({todo,i,edit,del}) {
                 </h4>
                 
                 
-                {/* {localStorage.getItem(i+1)} */}
+               
                    
         </div>
     )
