@@ -12,28 +12,29 @@ export default function Todo() {
 
     const additem = () => {
         setlist([...list, { task: text, id: null }])
-        localStorage.setItem('items', JSON.stringify(list));
-       
-        settext('')
+        //  list.map((store,i)=>{localStorage.setItem(i+1, JSON.stringify(store));})
+         settext('')
     }
 
     const delAll = () => {
         setlist([])
-        localStorage.clear();
+        // localStorage.clear();
     }
 
-    const delitem = (deltask) => {
-        setlist(list.filter((del) => (deltask !== del.id)))
+    const delitem = (delindex) => {
+        setlist(list.filter((del) => (delindex !== del.id)))
+        // localStorage.removeItem(delindex)
     }
 
     const edititem = (value, index) => {
         const updated = prompt("edit this task", value)
+      
 
         list.map((editlist) => {
             if (index === editlist.id) {
                 editlist.task = updated;
-
-            }})
+               }})
+            // localStorage.setItem(index, JSON.stringify(updated))
 
         setlist([...list])
     }
