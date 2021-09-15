@@ -11,30 +11,33 @@ export default function Todo() {
     }
 
     const additem = () => {
-        setlist([...list, { task: text, id: null }])
-        //  list.map((store,i)=>{localStorage.setItem(i+1, JSON.stringify(store));})
+        // setlist([...list, text])
+         list.map((store,i)=>{localStorage.setItem(i+1, JSON.stringify(store));})
+         setlist([...list,text])
          settext('')
     }
 
     const delAll = () => {
-        setlist([])
-        // localStorage.clear();
+        // setlist([])
+        localStorage.clear();
+        setlist([...list])
     }
 
     const delitem = (delindex) => {
-        setlist(list.filter((del) => (delindex !== del.id)))
-        // localStorage.removeItem(delindex)
+        // setlist(list.filter((del) => (delindex !== del.id)))
+        localStorage.removeItem(delindex)
+        setlist([...list])
     }
 
     const edititem = (value, index) => {
         const updated = prompt("edit this task", value)
       
 
-        list.map((editlist) => {
-            if (index === editlist.id) {
-                editlist.task = updated;
-               }})
-            // localStorage.setItem(index, JSON.stringify(updated))
+        // list.map((editlist) => {
+        //     if (index === editlist.id) {
+        //         editlist.task = updated;
+        //        }})
+            localStorage.setItem(index, JSON.stringify(updated))
 
         setlist([...list])
     }
