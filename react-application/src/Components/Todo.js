@@ -15,11 +15,13 @@ export default function Todo() {
          list.map((store,i)=>{localStorage.setItem(i+1, JSON.stringify(store));})
          setlist([...list,text])
          settext('')
+         console.log(list);
     }
 
     const delAll = () => {
         // setlist([])
         localStorage.clear();
+        console.log(list);
         setlist([...list])
     }
 
@@ -27,6 +29,7 @@ export default function Todo() {
         // setlist(list.filter((del) => (delindex !== del.id)))
         localStorage.removeItem(delindex)
         setlist([...list])
+        console.log(list);
     }
 
     const edititem = (value, index) => {
@@ -38,7 +41,7 @@ export default function Todo() {
         //         editlist.task = updated;
         //        }})
             localStorage.setItem(index, JSON.stringify(updated))
-
+            console.log(list);
         setlist([...list])
     }
 
