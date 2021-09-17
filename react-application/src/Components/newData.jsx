@@ -1,77 +1,35 @@
-const Data =[
+ const List=[
     {
-        id: 1,
-        title: 'Bacon Overflow',
-        category: 'Breakfast',
-        price: 15.99,
-        img: 'https://the.ismaili/sites/default/files/styles/carousel_banner/public/breakfast_article-2.jpg?itok=Ih_XXp5e',
-        desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
-      },
-      {
-        id: 2,
-        title: 'Diner Double',
-        category: 'Lunch',
-        price: 13.99,
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ09TYpal8pUvHbBOgE39Necfb5h0NneZOOOQ&usqp=CAU',
-        desc: `Vaporware iPhone mumblecore selvage raw  leggings gochujang helvita. Marfa thundercats. `,
-      },
-      {
-        id: 3,
-        title: 'Godzilla Milkshake',
-        category: 'Shake',
-        price: 6.99,
-        img: 'https://therecipecritic.com/wp-content/uploads/2020/02/Shamrock-Shake-8.jpg',
-        desc: `Ombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
-      },
-      {
-        id: 4,
-        title: 'Country Delight',
-        category: 'Breakfast',
-        price: 20.99,
-        img: 'https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/scrambled-eggs-breakfast-1296x728-header.jpg?w=1155&h=1528',
-        desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut. `,
-      },
-      {
-        id: 5,
-        title: 'Egg Attack',
-        category: 'Lunch',
-        price: 22.99,
-        img: 'https://img.huffingtonpost.com/asset/601adc4a2500000a0591aea1.jpeg?cache=OiEwkpubiF&ops=scalefit_720_noupscale',
-        desc: `Franzen vegan pabst bicycle rights kickstarter pinterest meditation farm-to-table 90's pop-up. `,
-      },
-      {
-        id: 6,
-        title: 'Oreo Dream',
-        category: 'Shake',
-        price: 18.99,
-        img: 'https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Chocolate-Peanut-Butter-Shakes_EXPS_FT19_245766_F_1008_1.jpg',
-        desc: `Portland chicharrones ethical edison bulb, palo santo craft beer chia heirloom iPhone everyday.`,
-      },
-      {
-        id: 7,
-        title: 'Buttermilk Pancakes',
-        category: 'Breakfast',
-        price: 8.99,
-        img: 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2020%2F10%2F08%2Fblueberry-pancake-1255787230-2000.jpg',
-        desc: `Carry jianbing normcore freegan. Viral single-origin coffee live-edge, belly cloud bread iceland put a bird. `,
-      },
-      {
-        id: 8,
-        title: 'American Classic',
-        category: 'Lunch',
-        price: 12.99,
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQowT7GkeSmbaKBTLMcDrWRukJIVcqLeD3Mpg&usqp=CAU',
-        desc: `On it tumblr kickstarter thundercats migas everyday carry squid palo santo leggings. Food truck truffaut.  `,
-      },
-      {
-        id: 9,
-        title: 'Quarantine Buddy',
-        category: 'Shake',
-        price: 16.99,
-        img: 'https://www.floraandvino.com/wp-content/uploads/2017/08/Strawberry-Avocado-Layer-Shakes-15.jpg',
-        desc: `Skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
-      },
+        "id": "1",
+        "title": "Nike Shoes 01",
+        "src":"https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/zjp8fptkt8xvzszzmskz/air-monarch-iv-mens-training-shoes-lPtRrS.png",
+        "content": "Out of Stock",
+        "price": 20,
       
-  
-    ];
-export default Data;
+    },
+    {
+        "id": "2",
+        "title": "Nike Shoes 02",
+        "src": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/2f5356d5-9f29-48c2-a97b-a74b329add75/air-max-270-little-kids-shoe-RStNgd.png",
+         "content": "Out of Stock",
+        "price": 19,
+       
+    },
+    {
+        "id": "3",
+        "title": "Nike Shoes 03",
+        "src": "https://static.nike.com/a/images/f_auto/dpr_3.0/h_500,c_limit/g1ljiszo4qhthfpluzbt/nike-joyride.jpg",
+        "content": "Available",
+        "price": 19,
+      
+    },
+    {
+        "id": "4",
+        "title": "Nike Shoes 04",
+        "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSibZtCeLglg5FzVkxENg1MhKi0ZiHZ1xF2CA&usqp=CAU",
+        "content": "Available",
+        "price": 45,
+      
+    }
+]
+export default List;
