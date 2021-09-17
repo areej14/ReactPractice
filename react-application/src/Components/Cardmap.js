@@ -1,16 +1,34 @@
-import React from 'react'
-import List from './newData.jsx'
+import React ,{useEffect,useState} from 'react'
+
 import "../App.css"
 import Card from './Card'
 
 
 const Cardmap = () => {
+    const [state, setstate] = useState([])
+    async function Api() {
+        try {
+            let url="https://course-api.com/react-tours-project";
+            let data = await fetch(url)
+            console.log(url);
+            let json= await data.json();
+            setstate(json)
+            
+        } catch (error) {
+            alert("Error: " + error.message)
+        }
+
+    }
+    useEffect(() => {
+        Api()
+        
+    }, [])
     return (
-        <div className="body">
-            {List.map((item,i) =><Card title={item.title} price={item.price} src={item.src} content={item.content}  key={i}/>)}
+        <div className="container">
+            <h2>Tour List</h2>
+            {state.map((item,i) =><Card title={item.name} price={item.price} src={item.image} content={item.info}  key={i}/>)}
         </div>
     )
 }
-// items={item}
 
 export default Cardmap

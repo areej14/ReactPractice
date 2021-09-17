@@ -1,13 +1,12 @@
-import React from 'react'
+import React,{useState} from 'react'
 import "../App.css";
-import PropTypes from 'prop-types';
+
 
 const Card = (props) => {
-  // const {items :{title,src,price,content}}=props;
-  // console.log(typeof title)
-  // console.log(typeof src)
-  // console.log(typeof price)
-  // console.log(typeof content)
+  const [Readmore, setReadmore] = useState(false)
+  const show=()=>{
+setReadmore(!Readmore)
+  }
    return (
        <>
          <div>
@@ -17,7 +16,7 @@ const Card = (props) => {
          <img className="card-img-top image" src={props.src} alt="Card  cap" />
          <div className="card-body">
            <h5 className="card-title"><mark><b>Price: </b>{props.price} $</mark></h5><hr/><hr/>
-           <p className="card-text"><mark><b> {props.content}</b></mark></p>
+           <p className="card-text"><mark><b>{Readmore?props.content:props.content.slice(0,20)}</b></mark></p><a onClick={show} href="/">ReadMore</a>
          </div>
        
        </div>
@@ -28,13 +27,7 @@ const Card = (props) => {
  )
           }
        
-          Card.propTypes={
-             title: PropTypes.string,
-            src: PropTypes.string,
-            content:PropTypes.string,
-            price: PropTypes.number
-            
-          }; 
+         
 
 export default Card
            
