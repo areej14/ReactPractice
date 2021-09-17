@@ -1,38 +1,36 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import "../App.css";
 
 
-const Card = (props) => {
+const Card = ({data,fun}) => {
+
   const [Readmore, setReadmore] = useState(false)
-  const show=(index)=>{
-    Readmore===index?
-setReadmore(false):setReadmore(index)
+  const show = (position) => {
+    Readmore === position ?
+      setReadmore(false) : setReadmore(position)
   }
-   return (
-       <>
-         <div>
-           
-           <div  className="card cardb" style={{"width": "18rem"}}>
-           <h4>  {props.title}</h4>
-         <img className="card-img-top image" src={props.src} alt="Card  cap" />
-         <div className="card-body">
-           <h5 className="card-title"><mark><b>Price: </b>{props.price} $</mark></h5><hr/><hr/>
-           <p className="card-text"><mark><b>{Readmore===props.key ? props.content : (props.content.slice(0, 10))}
-          <span onClick={() => show(props.key)}>{Readmore===props.key ? (<a href="#" >Read Less </a>) : 
-            (<a href="#" >... Read More </a>)}</span>
-           </b></mark></p>
-       
-       </div>
+  return (
+    <>
+
+         <div className="card cardb" >
+          <h4>{data.name}</h4>
+          <img className="card-img-top image" src={data.image} alt="Card  cap" />
+          <div className="card-body">
+            <h5 className="card-title"><mark><b>Price: </b>{data.price}$</mark></h5>
+            <p className="card-text">{Readmore === data.id ? data.info : (data.info.slice(0, 27))}
+              <span onClick={() => show(data.id)}>{Readmore === data.id ? ( <button className="mx-2" style={{outline:'none', border: 'none'}}> Read Less </button>):(<button  className="mx-2" style={{outline:'none', border: 'none'}}> Read More </button>)}</span>
+            </p>
+            <button className="btn btn-danger" onClick={() => fun(data.id)}>Not Interested</button>
+          </div>
+\
+         </div>
       
-       </div>
-       </div>
-      
-       </>   
- )
-          }
-       
-         
+
+    </>
+  )
+}
+
+
 
 export default Card
-           
-           
+
