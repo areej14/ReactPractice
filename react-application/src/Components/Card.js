@@ -4,8 +4,9 @@ import "../App.css";
 
 const Card = (props) => {
   const [Readmore, setReadmore] = useState(false)
-  const show=()=>{
-setReadmore(!Readmore)
+  const show=(index)=>{
+    Readmore===index?
+setReadmore(false):setReadmore(index)
   }
    return (
        <>
@@ -16,11 +17,14 @@ setReadmore(!Readmore)
          <img className="card-img-top image" src={props.src} alt="Card  cap" />
          <div className="card-body">
            <h5 className="card-title"><mark><b>Price: </b>{props.price} $</mark></h5><hr/><hr/>
-           <p className="card-text"><mark><b>{Readmore?props.content:props.content.slice(0,20)}</b></mark></p><a onClick={show} href="/">ReadMore</a>
-         </div>
+           <p className="card-text"><mark><b>{Readmore===props.key ? props.content : (props.content.slice(0, 10))}
+          <span onClick={() => show(props.key)}>{Readmore===props.key ? (<a href="#" >Read Less </a>) : 
+            (<a href="#" >... Read More </a>)}</span>
+           </b></mark></p>
        
        </div>
       
+       </div>
        </div>
       
        </>   
