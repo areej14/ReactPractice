@@ -5,13 +5,13 @@ import Loader from './Loader'
 
 
 const Cardmap = () => {
-    const [state, setstate] = useState([])
+    const [input, setinput] = useState([])
 
     async function Api() {
         try {
             let url = await fetch("https://course-api.com/react-tours-project");
             let data = await url.json();
-            setstate(data)
+            setinput(data)
 
         } catch (error) {
             alert("Error: " + error.message)
@@ -22,7 +22,7 @@ const Cardmap = () => {
     }
     const remove = (i) => {
 
-        setstate(state.filter((api) => api.id !== i))
+        setinput(input.filter((api) => api.id !== i))
 
 
     }
@@ -31,9 +31,9 @@ const Cardmap = () => {
 
     }, [])
     return (
-        <>{(state.length !== 0) ? (<div><u><h2>Tour List</h2></u>
+        <>{(input.length !== 0) ? (<div><u><h2>Tour List</h2></u>
             <div className="body">
-                {state.map((item, i) => <Card data={item} key={i} fun={remove} />)}
+                {input.map((item, i) => <Card data={item} key={i} fun={remove} />)}
             </div></div>) : <Loader fun={Api} />}
         </>
     )

@@ -22,7 +22,7 @@ const Card = ({data,fun}) => {
             </p>
             <button className="btn btn-danger" onClick={() => fun(data.id)}>Not Interested</button>
           </div>
-\
+
          </div>
       
 
