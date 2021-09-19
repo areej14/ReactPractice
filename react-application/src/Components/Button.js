@@ -1,10 +1,12 @@
 import React from 'react'
 
-function Button({data,fun}) {
+function Button({ set, fun }) {
+    console.log("btn cmp", set);
     return (
-        <div>
-            {data.map((btns,i)=><button className="btn btn-primary" type="button" data-bs-toggle="offcanvas" 
-            data-bs-target="#offcanvasTop"onClick={() =>fun(btns.company)} aria-controls="offcanvasTop">{btns.company}</button>)}
+        <div style={{ textAlign: "center", margin: "10%" }}>
+            {set.map((btns, i) =>
+                <button className="btn btn-outline-warning mx-3 my-2 " type="button" data-bs-toggle="offcanvas" key={i} data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" onClick={() => fun(btns)} >{btns}</button>
+            )}
         </div>
     )
 }

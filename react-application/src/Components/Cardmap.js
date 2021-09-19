@@ -1,49 +1,64 @@
 import React, { useEffect, useState } from 'react'
 import "../App.css"
 import Button from './Button'
-
+import Loader from './Loader'
 import Details from './Details'
 
-import Loader from './Loader'
 
 
 const Cardmap = () => {
     const [input, setinput] = useState([])
-    const [buttonlist, setbuttonlist] = useState([])
+    const [button, setbutton] = useState([])
 
 
     async function Api() {
         try {
             let url = await fetch("https://course-api.com/react-tabs-project");
-            let data = await url.json();
-            setinput(data)
-            setbuttonlist(data)
+            let input = await url.json();
+            setinput(input)
+            setbutton(input)
 
         } catch (error) {
             alert("Error: " + error.message)
         }
- 
+
 
 
     }
-   const show=(i)=>{
-       setinput(input.filter((array)=>(array.company===i)))
-   }
+    const category = button.map((val) => val.company)
+
+    const arrangeCategory = new Set(category)
+
+    const arrangeinput = [...arrangeCategory]
+
+
+    function show(choice) {
+        console.log("ini list", input);
+
+        console.log(choice);
+        const filter = button.filter((item) => item.company === choice)
+        setinput(filter)
+        console.log("final list", filter)
+    }
+
+
     useEffect(() => {
         Api()
 
     }, [])
     return (
         <>
-        {/* {(input.length !== 0) ?  */}
-        (
-            <div className="body">
-                <Button data={buttonlist} fun={show}/>
-                
-                {<Details list={input}   />}
-            </div>
-            )
-             {/* : <Loader fun={Api} />} */}
+            {(input.length !== 0) ?
+
+                <div className="body">
+                    <h2 style={{ color: "grey" }}>Choose Any Company</h2>
+                    <Button set={arrangeinput} fun={show} />
+
+                    <Details data={input} />
+
+                </div>
+
+                : <Loader fun={Api} />}
         </>
     )
 }
