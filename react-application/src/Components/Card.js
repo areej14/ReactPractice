@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "../App.css";
+// import "../App.css";
 
 
 const Card = ({data,fun}) => {
@@ -13,14 +13,14 @@ const Card = ({data,fun}) => {
     <>
 
          <div className="card cardb" >
-          <h4>{data.name}</h4>
-          <img className="card-img-top image" src={data.image} alt="Card  cap" />
+          <h4>{data.title}</h4>
+          
           <div className="card-body">
-            <h5 className="card-title"><mark><b>Price: </b>{data.price}$</mark></h5>
-            <p className="card-text">{Readmore === data.id ? data.info : (data.info.slice(0, 87))}
+            {/* <h5 className="card-title"><mark>{data.duties}</mark></h5> */}
+            <p className="card-text">{Readmore === data.id ? data.dutied : (data.duties.slice(0, 87))}
               <span onClick={() => show(data.id)}>{Readmore === data.id ? ( <button className="btn btn-info btn-sm mx-2" style={{outline:'none', border: 'none'}}> Read Less </button>):(<button  className="btn btn-sm btn-info mx-2" style={{outline:'none', border: 'none'}}> Read More </button>)}</span>
             </p>
-            <button className="btn btn-danger" onClick={() => fun(data.id)}>Not Interested</button>
+            {/* <button className="btn btn-danger" onClick={() => fun(data.id)}>Not Interested</button> */}
           </div>
 
          </div>
