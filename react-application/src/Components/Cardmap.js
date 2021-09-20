@@ -14,11 +14,11 @@ export default function Cardmap() {
     const [item, setitem] = useState(Data)
     function desireItem(choice) {
 
-        (choice == 'All')&& setitem(Data)
+        (choice == 'All')? setitem(Data):
 
-        const filter = Data.filter((item) => item.category == choice)
-        setitem(filter)
-        console.log(filter)
+        
+        setitem(Data.filter((item) => item.category == choice))
+        
     }
       
   return (
