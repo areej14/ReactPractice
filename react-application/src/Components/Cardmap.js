@@ -8,7 +8,7 @@ import Details from './Details'
 
 const Cardmap = () => {
     const [input, setinput] = useState([])
-    const [button, setbutton] = useState([])
+    const [data, setdata] = useState([])
 
 
     async function Api() {
@@ -16,7 +16,7 @@ const Cardmap = () => {
             let url = await fetch("https://course-api.com/react-tabs-project");
             let input = await url.json();
             setinput(input)
-            setbutton(input)
+            setdata(input)
 
         } catch (error) {
             alert("Error: " + error.message)
@@ -25,18 +25,14 @@ const Cardmap = () => {
 
 
     }
-    const category = button.map((val) => val.company)
-
-    const arrangeCategory = new Set(category)
-
-    const arrangeinput = [...arrangeCategory]
+    
 
 
     function show(choice) {
         console.log("ini list", input);
 
         console.log(choice);
-        const filter = button.filter((item) => item.company === choice)
+        const filter = data.filter((item) => item.id === choice)
         setinput(filter)
         console.log("final list", filter)
     }
@@ -52,7 +48,7 @@ const Cardmap = () => {
 
                 <div className="body">
                     <h2 style={{ color: "grey" }}>Choose Any Company</h2>
-                    <Button set={arrangeinput} fun={show} />
+                    <Button set={data} fun={show} />
 
                     <Details data={input} />
 
