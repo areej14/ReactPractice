@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import "../App.css"
-import Button from './Button'
 import Loader from './Loader'
 import Details from './Details'
 
@@ -13,7 +12,7 @@ const Cardmap = () => {
 
     async function Api() {
         try {
-            let url = await fetch("https://course-api.com/react-tabs-project");
+            let url = await fetch("https://api.github.com/users");
             let input = await url.json();
             setinput(input)
             setdata(input)
@@ -48,9 +47,17 @@ const Cardmap = () => {
 
                 <div className="body">
                     <h2 style={{ color: "grey" }}>Choose Any Company</h2>
-                    <Button set={data} fun={show} />
+                   
+                    {input.map((item, i) => <div >
+        <div className="offcanvas-header" key={i}>
+          <h5 id="offcanvasTopLabel">Name: {item.id}<br />{item.login}<br /></h5>
+          <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
 
-                    <Details data={input} />
+        <div className="offcanvas-body">
+
+        </div>
+      </div>)}
 
                 </div>
 
