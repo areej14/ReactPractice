@@ -1,21 +1,25 @@
 import React from 'react'
-import List from './List'
 function Details({ data }) {
-console.log(data);
+
   return (
     <div style={{ fontFamily: "cursive" }}>
 
 
-      {data.map((item, i) => <div >
-        <div className="offcanvas-header" key={i}>
-          <h5 id="offcanvasTopLabel">Name: {item.id}<br />{item.login}<br /><List data={item.id} /></h5>
-          <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-
-        <div className="offcanvas-body">
-
-        </div>
-      </div>)}
+<div className="card mb-3" style={{maxWidth: "540px"}}>
+  <div className="row g-0">
+    <div className="col-md-4">
+      <img src={data.avatar_url} className="img-fluid rounded-start" alt="..."/>
+    </div>
+    <div className="col-md-8">
+      <div className="card-body">
+        <h5 className="card-title">Name: {data.login}</h5>
+        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+        <a href={data.repos_url} target="_blank"><button className="btn btn-primary">Search Repositories</button></a>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
   )
 }
