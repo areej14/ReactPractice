@@ -39,8 +39,10 @@ const Cardmap = () => {
       
         setname(e.target.value)
         const url = await fetch((`https://api.github.com/users/${name}`), { "method": "GET", "headers": headers })
-        let Data = await url.json();
-        setinput([Data])
+        let parsedData = await url.json();
+        console.log(name.trim().length);
+        name.trim().length===0?setinput(data):
+        setinput([parsedData])
         
 
     }
@@ -51,20 +53,23 @@ const Cardmap = () => {
 
     return (
         <>
-            {/* {input.length !== 0 ? */}
+            
 
-                <div className="container" >
-                    In List: <input value={value} onChange={(value) => Check(value)} type="text" />
-                    From Net: <input value={name} onChange={(name) => User(name)} type="text" />
+               <div style={{textAlign:'center' ,backgroundColor:'grey'}}>
+                   <h2>Search</h2>
+                    <input value={value} className="mx-3 my-2"onChange={(value) => Check(value)} type="text" placeholder="Search from List"/> 
+                    <input value={name} onChange={(name) => User(name)} type="text" placeholder="Search Other Accounts" /><br/><br/>
 
 
 
-                    {/* {flag===true && */}
-                    { input.map((item, i) => <Details data={item} key={i} className="col-md-4" />)}
+                   
+                    <div className="row" >
+                   
+                    { input.map((item, i) => <Details data={item} key={i}  />)}
+               
                 </div>
-                 {/* :
-                <Loader />} */}
-
+                </div>
+               
 
         </>
     )
