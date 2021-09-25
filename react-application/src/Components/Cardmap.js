@@ -13,11 +13,11 @@ const Cardmap = () => {
 
 
 
-    const headers = { AUTHORIZATION: "Token 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" }
+   
     async function Apifetch() {
         try {
             let Api = "https://api.github.com/users";
-            let url = await fetch((Api), { "method": "GET", "headers": headers })
+            let url = await fetch((Api))
             let parsedData = await url.json();
             setinput(parsedData)
             setdata(parsedData)
@@ -53,7 +53,7 @@ const Cardmap = () => {
     return (
         <>
 
-  {input.length!==0?
+  
             <div style={{ textAlign: 'center' }}>
                 <h2>Search Github Users <i className="fas fa-users"></i></h2>
 
@@ -65,8 +65,8 @@ const Cardmap = () => {
                     {input.map((item, i) => <Details data={item} key={i} />)}
 
                 </div>
-            </div>:
-         <Loader/>}
+            </div>
+        
 
 
         </>
