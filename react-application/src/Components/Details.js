@@ -14,8 +14,9 @@ function Details({ data }) {
     </div>
     <div className="col-md-8">
       <div className="card-body">
-        <h5 className="card-title">Name: {data.login}</h5>
+        <h5 className="card-title"> {data.login}</h5>
        <h5>{data.type}</h5>
+       
       <p>Hi... I am a github User</p>
         <a href={data.repos_url} target="_blank"><button className="btn btn-outline-primary mx-2">Repositories</button></a>
         <a href={data.html_url} target="_blank"><button className="btn btn-outline-primary"> Github Account</button></a>

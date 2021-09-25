@@ -8,7 +8,7 @@ const Cardmap = () => {
     const [data, setdata] = useState([])
     const [value, setvalue] = useState('')
     const [name, setname] = useState('')
-    // const [flag, setflag] = useState(false)
+   
     
 
 
@@ -20,8 +20,7 @@ const Cardmap = () => {
             let parsedData = await url.json();
             setinput(parsedData)
             setdata(parsedData)
-            // setflag(true)
-
+          
         } catch (error) {
             alert("Error: " + error.message)
         }
@@ -36,13 +35,17 @@ const Cardmap = () => {
         setinput(data.filter((item) => (item.login.toLowerCase().includes(e.target.value.toLowerCase()))));
     }
     async function User(e) {
-      
+     
         setname(e.target.value)
         const url = await fetch((`https://api.github.com/users/${name}`), { "method": "GET", "headers": headers })
         let parsedData = await url.json();
-        console.log(name.trim().length);
-        name.trim().length===0?setinput(data):
+        try{
+        e.target.value===''?setinput(data):
         setinput([parsedData])
+      }
+      catch (error) {
+          alert('Error',error.message)
+      }
         
 
     }
@@ -55,10 +58,11 @@ const Cardmap = () => {
         <>
             
 
-               <div style={{textAlign:'center' ,backgroundColor:'grey'}}>
-                   <h2>Search</h2>
-                    <input value={value} className="mx-3 my-2"onChange={(value) => Check(value)} type="text" placeholder="Search from List"/> 
-                    <input value={name} onChange={(name) => User(name)} type="text" placeholder="Search Other Accounts" /><br/><br/>
+               <div style={{textAlign:'center' }}>
+                   <h2>Search Github Users <i class="fas fa-users"></i></h2>
+                   
+                  <input value={value} className="my-2"onChange={(value) => Check(value)} type="text" placeholder="Search from List"/> <i className="fas fa-search"></i><br/>
+                  <input value={name} onChange={(name) => User(name)} type="text" placeholder="Search Other Users"/> <i className="fas fa-search"></i> <br/><br/>
 
 
 
