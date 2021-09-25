@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "../App.css"
 import Details from './Details'
+import Loader from './Loader'
 
 
 const Cardmap = () => {
@@ -12,8 +13,8 @@ const Cardmap = () => {
 
 
 
-    const headers = { AUTHORIZATION: "Token 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" }
-    async function Api() {
+    const headers = { AUTHORIZATION: "Token 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" }
+    async function Apifetch() {
         try {
             let Api = "https://api.github.com/users";
             let url = await fetch((Api), { "method": "GET", "headers": headers })
@@ -36,7 +37,7 @@ const Cardmap = () => {
     async function User(e) {
 
         setname(e.target.value)
-        const url = await fetch((`https://api.github.com/users/${e.target.value}`), { "method": "GET", "headers": headers })
+        const url = await fetch((`https://api.github.com/users/${e.target.value}`))
         let parsedData = await url.json();
         ((e.target.value === '') || (parsedData.message === 'Not Found')) ? setinput(data) :
             setinput([parsedData])
@@ -45,14 +46,14 @@ const Cardmap = () => {
 
     }
     useEffect(() => {
-        Api();
+        Apifetch();
 
     }, [])
 
     return (
         <>
 
-
+  {input.length!==0?
             <div style={{ textAlign: 'center' }}>
                 <h2>Search Github Users <i className="fas fa-users"></i></h2>
 
@@ -64,7 +65,8 @@ const Cardmap = () => {
                     {input.map((item, i) => <Details data={item} key={i} />)}
 
                 </div>
-            </div>
+            </div>:
+         <Loader/>}
 
 
         </>
