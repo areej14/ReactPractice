@@ -10,10 +10,6 @@ const Cardmap = () => {
     const [value, setvalue] = useState()
     const [name, setname] = useState()
 
-
-
-
-   
     async function Apifetch() {
         try {
             let Api = "https://api.github.com/users";
@@ -53,12 +49,12 @@ const Cardmap = () => {
     return (
         <>
 
-  
+
             <div style={{ textAlign: 'center' }}>
                 <h2>Search Github Users <i className="fas fa-users"></i></h2>
 
                 <input value={value} className="my-2" onChange={Check} type="text" placeholder="--Search from List--" /> <i className="fas fa-search"></i><br />
-                <input value={name} onChange={User}  type="text" placeholder="--Search Other Users--" /> <i className="fas fa-search"></i> <br /><br />
+                <input value={name} onChange={User} type="text" placeholder="--Search Other Users--" /> <i className="fas fa-search"></i> <br /><br />
 
                 <div className="row" >
 
@@ -66,7 +62,7 @@ const Cardmap = () => {
 
                 </div>
             </div>
-        
+
 
 
         </>
