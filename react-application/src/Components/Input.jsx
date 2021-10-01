@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, {useRef, useState, useEffect } from 'react'
 
 function Input() {
     const Previous = useRef('')
@@ -10,16 +10,19 @@ function Input() {
         Previous.current = value
         console.log('useeffect')
         console.log(Previous.current)
+        
     })
+    let pre=Previous.current
     const show = () => {
         setdata([...data, value])
-        Previous.current.style.color ='blue';
+        
 
     }
+    
     return (
         <div >
             <input value={value}  onChange={(e) => setvalue(e.target.value)} />
-            <p ref={Previous}>previous value is:  {value === '' ? 'its your first val' : Previous.current}</p>
+            <p ref={Previous}>previous value is:  {value === '' ? 'its your first val' : pre}</p>
             <button onClick={show}>Submit</button>
             {data.map((item) => <div><li>{item}</li></div>)}
         </div>
