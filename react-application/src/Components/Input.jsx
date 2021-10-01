@@ -1,30 +1,33 @@
 import React, {useRef, useState, useEffect } from 'react'
 
 function Input() {
-    const Previous = useRef('')
+    const Previous = useRef()
+    const input = useRef()
     const [data, setdata] = useState([])
     const [value, setvalue] = useState()
     
     useEffect(() => {
-           console.log(value);
+        //    console.log(value);
         Previous.current = value
-        console.log('useeffect')
+        // console.log('useeffect')
         console.log(Previous.current)
         
     })
     let pre=Previous.current
     const show = () => {
-        setdata([...data, value])
+        setvalue(input.current.value)
         
 
     }
     
     return (
         <div >
-            <input value={value}  onChange={(e) => setvalue(e.target.value)} />
-            <p ref={Previous}>previous value is:  {value === '' ? 'its your first val' : pre}</p>
+            <input  ref={input} />
+            {/* <p ref={Previous}>previous value is:  {value === '' ? 'its your first val' : pre}</p> */}
+            <li>{value}</li>
             <button onClick={show}>Submit</button>
-            {data.map((item) => <div><li>{item}</li></div>)}
+            <li>{pre}</li>
+           
         </div>
     )
 }
