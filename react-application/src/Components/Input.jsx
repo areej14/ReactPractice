@@ -1,33 +1,51 @@
-import React, {useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
 function Input() {
-    const Previous = useRef()
+    const prev = useRef()
     const input = useRef()
-    const [data, setdata] = useState([])
-    const [value, setvalue] = useState()
-    
+    const [value, setvalue] = useState('')
+    const [flag, setflag] = useState(false)
+
     useEffect(() => {
-        //    console.log(value);
-        Previous.current = value
-        // console.log('useeffect')
-        console.log(Previous.current)
-        
+
+        prev.current = value
+        input.current.style.backgroundColor ="teal";
+        input.current.style.Color ="white";
+
     })
-    let pre=Previous.current
+    let pre = prev.current
     const show = () => {
         setvalue(input.current.value)
-        
+       
+        setflag(true)
+
+
 
     }
-    
+
     return (
-        <div >
-            <input  ref={input} />
-            {/* <p ref={Previous}>previous value is:  {value === '' ? 'its your first val' : pre}</p> */}
-            <li>{value}</li>
-            <button onClick={show}>Submit</button>
-            <li>{pre}</li>
-           
+        <div style={{ textAlign: "center" }}>
+            <input className="my-2" ref={input} />
+
+            <button className="btn btn-sm btn-outline-primary mx-2" onClick={show}>Submit</button><br />
+            <div className="d-flex bd-highlight">
+                <div className="p-2 flex-fill bd-highlight"> <h5>prev Value:{flag && <p>{pre === '' ? 'No prev Value' : pre}</p>}</h5></div>
+                <div className="p-2 flex-fill bd-highlight"><h5>Current Value:<br />{value}</h5></div>
+
+            </div>
+            <table className="table table-success table-striped">
+                <tr>
+                    <td>
+                    </td>
+                    <td> </td>
+                </tr>
+            </table>
+            <table>
+
+            </table>
+
+
+
         </div>
     )
 }
@@ -70,7 +88,7 @@ export default Input
 //   return (
 //     <div>
 //       <br /><h1>Current value : {props.count}</h1><br />
-//       <h2>Previous value : {lastval.current}</h2><br />
+//       <h2>prev value : {lastval.current}</h2><br />
 //     </div>
 //   )
 // }
