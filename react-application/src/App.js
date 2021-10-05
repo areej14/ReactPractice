@@ -1,24 +1,20 @@
-
-
-import Cardmap from "./Components/Cardmap";
-import React from "react";
-import { Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
+import {Route} from "react-router-dom";
+import NavBbar from "./Components/NavBbar";
+import All from './Components/All';
+import Shake from './Components/Shake'
+import Breakfast from './Components/Breakfast'
+import Lunch from './Components/Lunch'
 function App() {
   return (
     <>
-    <h2>Menu Card</h2>
-      <div className="btns">
-        <Link to="/" className="btn btn-success  mx-2" >All</Link>
-        <Link to="/Shake"className="btn btn-warning text-white mx-2" >Shake</Link>
-        <Link to="/Breakfast"className="btn btn-primary mx-2" >Breakfast</Link>
-        <Link to="Lunch"className="btn btn-info mx-2" >Lunch</Link>
-        <Link to="/Clear"className="btn btn-danger mx-2">Clear</Link>
-      </div>
-      {/* <Cardmap /> */}
+    
+    <NavBbar/>
+          {/* <Route path="/" exact = {true}><Home/><h3>My best Page</h3></Route>       //note you can write any html here,,,  or component
+          <Route path="/about"><About/></Route> */}
+          <Route path="/" exact = {true} className="btn btn-success  mx-2" ><All /></Route>
+        <Route path="/Shake"className="btn btn-warning text-white mx-2" ><Shake/></Route>
+        <Route path="/Breakfast"className="btn btn-primary mx-2" ><Breakfast /></Route>
+        <Route path="/Lunch"className="btn btn-info mx-2" ><Lunch /></Route>
     </>
   );
 }
