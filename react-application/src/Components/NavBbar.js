@@ -10,7 +10,7 @@ function NavBbar() {
         <Link to="/Shake"className="btn btn-warning text-white mx-2" >Shake</Link>
         <Link to="/Breakfast"className="btn btn-primary mx-2" >Breakfast</Link>
         <Link to="/Lunch"className="btn btn-info mx-2" >Lunch </Link>
-       
+      
       </div>
       </>
     )
