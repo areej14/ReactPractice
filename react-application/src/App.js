@@ -8,7 +8,7 @@ import { Global } from './Components/ContextApi';
 function App() {
   return (
     <>
-    <Global.Provider value={{name:"areej"}}>
+    <Global.Provider value={{name:"Global Data"}}>
       <Cmp1 />
       <Cmp2 />
       <Cmp3 /> 
