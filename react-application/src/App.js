@@ -73,7 +73,7 @@ function App() {
           return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`
         }
       })
-      console.log("facceMesh",faceMesh);
+      console.log("faceMesh",faceMesh);
      
       faceMesh.setOptions({
         maxNumFaces: 1,
