@@ -9,7 +9,7 @@ function App() {
   const webcamRef = useRef(null)
   const canvasRef = useRef(null)
   const connect = window.drawConnectors;
-  console.log('hh',connect);
+  console.log('drawconn',connect);
   var camera=null;
   function onResults(results) {
     // const video = webcamRef.current.video;
