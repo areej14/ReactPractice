@@ -39,16 +39,16 @@ function App() {
         //   lineWidth: 1,
         // });
         connect(canvasCtx, landmarks, Facemesh.FACEMESH_RIGHT_EYE, {
-          color: "green",  lineWidth: 2
+          color: "green",  lineWidth: 1
         });
         connect(canvasCtx, landmarks, Facemesh.FACEMESH_RIGHT_EYEBROW, {
-          color: "green", lineWidth: 2
+          color: "green", lineWidth: 1
         });
         connect(canvasCtx, landmarks, Facemesh.FACEMESH_LEFT_EYE, {
-          color: "green", lineWidth: 2
+          color: "green", lineWidth: 1
         });
         connect(canvasCtx, landmarks, Facemesh.FACEMESH_LEFT_EYEBROW, {
-          color: "green", lineWidth: 2
+          color: "green", lineWidth: 1
         });
         // connect(canvasCtx, landmarks, Facemesh.FACEMESH_FACE_OVAL, {
         //   color: "#E0E0E0",
