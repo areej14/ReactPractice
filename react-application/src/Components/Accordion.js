@@ -26,8 +26,11 @@ export default function Accordion() {
             
             <h1>Tour Guide</h1>
             
-            {Array.map((item,i)=> <div style={{ padding: '25px' }}><img src={item.img} style={{ height: "300px", width: "300px", borderRadius: "100%" }} /><br/> {click===i ? item.content : (item.content.slice(0, 80))}
-            <span onClick={() => toggle(i)}>{click===i ? (<a href="#" >Read Less <i className="fas fa-arrow-up" /></a>) : 
+            {Array.map((item,i)=> <div style={{ padding: '25px' }}><img src={item.img}
+             style={{ height: "300px", width: "300px", borderRadius: "100%" }} /><br/>
+              {click===i ? item.content : (item.content.slice(0, 80))}
+            <span onClick={() => toggle(i)}>{click===i ? (<a href="#" >Read Less 
+            <i className="fas fa-arrow-up" /></a>) : 
             (<a href="#" >... Read More <i className="fas fa-arrow-down"></i></a>)}</span>
 
 </div>)}
