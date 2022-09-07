@@ -11,7 +11,7 @@ function Parent() {
         (lock==="Lock")?setvalue(value+1):alert("Counter is in Lock Mode")
     };
     const Del=()=>{
-        (value>0||value>1)?( (lock==="Lock")?setvalue(value-1):alert("Counter is in Lock Mode")):alert("No is less than 0")
+        (value>0)?( (lock==="Lock")?setvalue(value-1):alert("Counter is in Lock Mode")):alert("No is less than 0")
     };
     
     const Lock=()=>{
