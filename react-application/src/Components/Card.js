@@ -3,6 +3,8 @@ import "../App.css";
 import PropTypes from 'prop-types';
 
 const Card = (props) => {
+  console.log(props);
+   const {title}=props;
   // const {items :{title,src,price,content}}=props;
   // console.log(typeof title)
   // console.log(typeof src)
@@ -13,7 +15,7 @@ const Card = (props) => {
          <div>
            
            <div  className="card cardb" style={{"width": "18rem"}}>
-           <h4>  {props.title}</h4>
+           <h4>  {title}</h4>
          <img className="card-img-top image" src={props.src} alt="Card  cap" />
          <div className="card-body">
            <h5 className="card-title"><mark><b>Price: </b>{props.price} $</mark></h5><hr/><hr/>
