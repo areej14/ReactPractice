@@ -45,13 +45,7 @@ const CreateNote = () => {
   
      </div>
      </form>
-        
-       
-        
-            
-           
-                   
-                    <div>
+            <div>
                     {List.map((data,i)=><div key={i}><li >{i+1}  {data.title}
                     </li><li>{data.des}</li>
                     <button onClick={()=>delNote(i+1)}>❌</button>
