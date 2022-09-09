@@ -4,10 +4,6 @@ import "./App.css";
 import Cardmap from "./Components/Cardmap";
 
 function App() {
- 
-
-  
-
   return (
     <>
      <Cardmap/>
