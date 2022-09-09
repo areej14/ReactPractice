@@ -6,9 +6,8 @@ const CreateNote = () => {
     des:""});
     const [List, setList]=useState([]);
     const delNote=(delindex)=>{
-        // setList(List.filter((del) => (delindex !== del.i)))
-        console.log(List.filter((del) => (delindex !== del.i)));
-        console.log(delindex);
+        setList(List.filter((del,i) => (delindex !== i+1)))
+      
 
     }
     const writeNote=(e)=>{
@@ -35,16 +34,27 @@ const CreateNote = () => {
     
   return (
     
-    <div>
-        <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="--Write title--" name="title" onChange={writeNote} value={note.title}/>
-            <input type="text" placeholder="--Write note--" name="des" onChange={writeNote} value={note.des}/>
-            <button onClick={keepNote}>➕</button>
-                    </form>
+    <div >
+   <form style={{width: '30%', margin:'auto', padding:'10px', textAlign:'center'}} onSubmit={handleSubmit}>
+   <div className="card" >
+   <div className="card-body">
+    <h5 className="card-title"><input type="text" placeholder="--Write title--" name="title" onChange={writeNote} value={note.title}/></h5>
+    <p className="card-text"><input type="text" placeholder="--Write note--" name="des" onChange={writeNote} value={note.des}/></p>
+   <button className="btn btn-primary" onClick={keepNote}>➕</button>
+  </div>
+  
+     </div>
+     </form>
+        
+       
+        
+            
+           
+                   
                     <div>
                     {List.map((data,i)=><div key={i}><li >{i+1}  {data.title}
                     </li><li>{data.des}</li>
-                    <button onClick={delNote(i+1)}>❌</button>
+                    <button onClick={()=>delNote(i+1)}>❌</button>
                     </div>
                     )}
                     </div>
