@@ -5,6 +5,12 @@ const CreateNote = () => {
         title:"",
     des:""});
     const [List, setList]=useState([]);
+    const delNote=(delindex)=>{
+        // setList(List.filter((del) => (delindex !== del.i)))
+        console.log(List.filter((del) => (delindex !== del.i)));
+        console.log(delindex);
+
+    }
     const writeNote=(e)=>{
         setnote((preVal)=>{
             
@@ -26,10 +32,7 @@ const CreateNote = () => {
     const handleSubmit=(e)=>{
         e.preventDefault()
     }
-    const delNote=(delindex)=>{
-        setList(List.filter((del) => (delindex !== del.id)))
-
-    }
+    
   return (
     
     <div>
@@ -38,10 +41,13 @@ const CreateNote = () => {
             <input type="text" placeholder="--Write note--" name="des" onChange={writeNote} value={note.des}/>
             <button onClick={keepNote}>➕</button>
                     </form>
-                    {List.map((data,i)=><div><li key={i}>{i+1}{data.title}
+                    <div>
+                    {List.map((data,i)=><div key={i}><li >{i+1}  {data.title}
                     </li><li>{data.des}</li>
                     <button onClick={delNote(i+1)}>❌</button>
-                    </div>)}
+                    </div>
+                    )}
+                    </div>
     </div>
   )
 }
