@@ -26,7 +26,8 @@ const CreateNote = () => {
     const handleSubmit=(e)=>{
         e.preventDefault()
     }
-    const delNote=()=>{
+    const delNote=(delindex)=>{
+        setList(List.filter((del) => (delindex !== del.id)))
 
     }
   return (
@@ -37,7 +38,10 @@ const CreateNote = () => {
             <input type="text" placeholder="--Write note--" name="des" onChange={writeNote} value={note.des}/>
             <button onClick={keepNote}>➕</button>
                     </form>
-                    {List.map((data,i)=><div><li key={i}>{i+1}{data.title}</li><li>{data.des}</li><button onClick={delNote(i+1)}>❌</button></div>)}
+                    {List.map((data,i)=><div><li key={i}>{i+1}{data.title}
+                    </li><li>{data.des}</li>
+                    <button onClick={delNote(i+1)}>❌</button>
+                    </div>)}
     </div>
   )
 }
