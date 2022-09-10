@@ -32,7 +32,8 @@ const Cardmap = () => {
         console.log("ini list", input);
 
         console.log(choice);
-        const filter = data.filter((item) => item.id === choice)
+        const filter = data.filter((item) => item.id === choice
+       )
         setinput(filter)
         console.log("final list", filter)
     }
