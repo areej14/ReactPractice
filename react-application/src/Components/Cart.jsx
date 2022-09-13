@@ -7,7 +7,7 @@ const Cart = () => {
     const dispatch = useDispatch();
   return (
     <div >
-        <div className="container">
+        {/* <div className="container">
             <div className="row">
                 <div className="col-md-4">
                     <img src={product.image} alt={product.title} height="200px" width="180px"/>
@@ -24,7 +24,7 @@ const Cart = () => {
         <i className="fa fa-plus"></i>
      </button>
             </div> 
-        </div>
+        </div> */}
     </div>
   )
 }
