@@ -2,11 +2,13 @@ import React from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { addCart,delCart } from './Redux/Action'
 
-const Cart = () => {
+const Cart = (props) => {
+    console.log("hello"+ props);
     // const state=useSelector((state) => state.HandleCart)
     const dispatch = useDispatch();
   return (
     <div >
+    kjk
         {/* <div className="container">
             <div className="row">
                 <div className="col-md-4">
