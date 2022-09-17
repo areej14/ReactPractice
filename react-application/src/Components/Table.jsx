@@ -83,8 +83,6 @@ const Delid=(id)=>{
   //     });
     // enddddddddddddd
     let id= editModal.id
-    // fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/ ${id}`, { method: 'GET' })
-    // .then((response) => response.json())
     console.log("APIid",id);
    await fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${id}`, {method: 'PUT', mode: 'cors',
    cache: 'no-cache',
