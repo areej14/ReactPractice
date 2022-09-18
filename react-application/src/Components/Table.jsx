@@ -112,6 +112,17 @@ const Delid=(id)=>{
       }
     });
   }
+  //Searche
+  const Search= async(e) => {
+    let id= e.target.value;
+    console.log(id, delid);
+    setDelid({id:id})
+    fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/ ${id}`, { method: 'GET' })
+    .then((response) => response.json())
+      .then((actualData) => setgetApi(actualData));
+  // console.log(res.json);
+}
+  
   //DELETE Data
   const onDelete = async () => {
     let id= delid.id;
@@ -159,6 +170,7 @@ const Delid=(id)=>{
 
       <div className="mx-2" style={{ textAlign: 'left' }}> <h4 >Bank names</h4>
         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={Add}><i className="fa fa-plus"></i> Add new record</button>
+     <div style={{float: 'right'}}><label className="align-right" >  Search: </label><input type="text" name="id" value={delid.id} onChange={Search} /></div>
         <br /><br />
       </div>
       <table className="table table-striped ">
@@ -173,7 +185,7 @@ const Delid=(id)=>{
         </thead>
         <tbody>
           {/* getting API data in table  using map */ }
-          {getApi?.map((data, id) => {
+          {getApi?getApi.map((data, id) => {
            return (<tr key={id}>
               <td>{id + 1}</td>
               <td>{data.cuntry_name}</td>
@@ -242,7 +254,7 @@ const Delid=(id)=>{
 
               </td>
             </tr>)
-          })}
+          }):<div>Data not found</div>}
 
         </tbody>
 
