@@ -84,7 +84,7 @@ const Delid=(id)=>{
     // enddddddddddddd
     let id= editModal.id
     console.log("APIid",id);
-   await fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${id}`, {method: 'PUT', mode: 'cors',
+   await fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${id}`, {Authorization: "Bearer 2XZ5dNYOWp_RDPDU2L47geoLAxscZmMqCpualslXF2c8py6ahnZBmJbK7KiOUECaRC9rM8e5BLfMyzEBWi-JEA4fhfZvJHkab-P7209pqfHJ6owTK99SBLQuUsL2v8geV2yIGreNpKu6mM_7IBfQA_91I5TrQ3oISJDOehDelzgcrVY6EZysWA8XEVru_YTq_2QErZxJU0C5GK_uPbI3wIFc5pwq8NWngPD53Y_JbOijat7zVEhKemocmS8pb4c01EAZycaFdQXsv8DKO_m8wod6Z_F9K6BngLBSDWFGgeWMxHae70ztjloXgDCBPpUN5xnlLco3q7q3uubbyL-GQCZdvwD1MOkqFcTzOCBsWouSPGG0ZZmPUtUbubtRyj7L9-hqaBfFngA6EiUHTNbobajjMpyk6DshG76Qs4xS4WE",method: 'PUT', mode: 'cors',
    cache: 'no-cache',
    credentials: 'same-origin',
    redirect: 'follow',
