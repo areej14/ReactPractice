@@ -54,7 +54,7 @@ const Delid=(id)=>{
     seteditModal({id:id,cuntry_name:countryName,unit_name:unitName})
   }
   //Edit method (PUT)
-  const EditApi= async ()=>{
+  const EditApi= async (id)=>{
   //   let id= editModal.id
   //   // from net 
   //   const requestOptions = {
@@ -82,9 +82,9 @@ const Delid=(id)=>{
   //         console.error('There was an error!', error);
   //     });
     // enddddddddddddd
-    let i= editModal.id
-    console.log("APIid",i);
-   await fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${i}`, {method: 'PUT',
+    // let i= editModal.id
+    console.log("APIid",id);
+   await fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${id}`, {method: 'PUT',
    cache: 'no-cache',
    credentials: 'same-origin',
    redirect: 'follow',
@@ -246,7 +246,7 @@ const Delid=(id)=>{
                         </form>
                       </div>
                       <div className="modal-footer">
-                        <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={EditApi}>Yes</button>
+                        <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={EditApi(data.currency_units_id)}>Yes</button>
                       </div>
                     </div>
                   </div>
