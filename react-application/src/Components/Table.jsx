@@ -6,28 +6,40 @@ const Table = () => {
   const [dfilter, setfilter] = useState([]);
   const [delid, setDelid] = useState({ id: '' });
   const [searchId, setSearchid] = useState({ id: '' });
-  //Add new Record fields
+  //getting date and time
+  const d = new Date();
+  let date = d.getUTCFullYear() + "-" + d.getUTCMonth() + "-" + d.getUTCDate();
+  var hours = d.getHours();
+  hours = (hours % 12) || 12;
+  let time = hours + ":" + d.getMinutes();
+  let autoT = date + "  " + time;
+
+  // Add new Record fields
   const [newRec, setnewRecord] = useState({ id: '', cuntry_name: '', unit_name: '', unit_sign: '', unit_titlecode: '', autodatetime: '' })
   //Edit Record fields
   const [editModal, seteditModal] = useState({ currency_units_id: '', cuntry_name: '', unit_name: '', unit_sign: '', unit_titlecode: '', autodatetime: '' })
 
   //POST Method
+
+
   const AddRecord = () => {
-    const{cuntry_name, unit_name}=newRec;
-    if(cuntry_name =='' ||unit_name ==''){
+
+    console.log(newRec);
+    const { cuntry_name, unit_name } = newRec;
+    if (cuntry_name == '' || unit_name == '') {
       alert("Enter values");
     }
-    else{
-    fetch(`https://countydevapiaws.genial365.com:443/api/currency_units`, {
-      headers: {
-        'Content-Type': 'application/json',
-      }, method: 'POST', body: JSON.stringify(newRec)
-    })
-      .then((response) => response.json())
-      .then(() => {
-        fetchAlldata()
-        setnewRecord({ cuntry_name: '', unit_name: '' })
+    else {
+      fetch(`https://countydevapiaws.genial365.com:443/api/currency_units`, {
+        headers: {
+          'Content-Type': 'application/json',
+        }, method: 'POST', body: JSON.stringify(newRec)
       })
+        .then((response) => response.json())
+        .then(() => {
+          fetchAlldata()
+          setnewRecord({ cuntry_name: '', unit_name: '', autodatetime: '' })
+        })
 
     }
   }
@@ -45,13 +57,15 @@ const Table = () => {
   //Handling Input Fiels of Add new record
   const Add = (e) => {
     e.preventDefault();
+    // updateTime()
     setnewRecord((preVal) => {
-      console.log(preVal);
       const { name, value } = e.target;
 
       return {
         ...preVal,
-        [name]: value
+        [name]: value,
+        autodatetime: autoT,
+
       }
     });
   }
@@ -63,6 +77,7 @@ const Table = () => {
   //Edit method (PUT)
 
   const EditApi = async () => {
+
     const { currency_units_id } = editModal
     await fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${currency_units_id}`, {
       method: 'PUT',
@@ -73,12 +88,12 @@ const Table = () => {
       fetchAlldata()
     })
 
+
   }
 
   //Search
   const Search = async (e) => {
     setSearchid({ id: e.target.value })
-    console.log(dfilter, e.target.value);
     let a = dfilter.filter((item) => item.currency_units_id == e.target.value);
     ((e.target.value === '') || (a.length === 0)) ? setgetApi(dfilter) : setgetApi(a);
 
@@ -91,7 +106,7 @@ const Table = () => {
     const res = await fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${id}`, { method: 'DELETE' })
     await res.json();
     fetchAlldata()
-   
+
 
   }
   //UseEffect to call GetApi method
@@ -184,6 +199,7 @@ const Table = () => {
                         currency_units_id: data.currency_units_id,
                         cuntry_name: data.cuntry_name,
                         unit_name: data.unit_name,
+                        autodatetime: autoT,
 
 
 
