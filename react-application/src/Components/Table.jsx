@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react';
 const Table = () => {
   const [getApi, setgetApi] = useState([]);
   const [dfilter, setfilter] = useState([]);
-  const [delid, setDelid] = useState({ id: '' });
+  const [delid, setDelid] = useState({ name: '' });
   const [searchId, setSearchid] = useState({ id: '' });
-  //getting date and time
+  // getting date and time
   const d = new Date();
   let month = d.getUTCMonth() + 1
   let date = d.getUTCFullYear() + "-" + month + "-" + d.getUTCDate();
@@ -14,6 +14,8 @@ const Table = () => {
   hours = (hours % 12) || 12;
   let time = hours + ":" + d.getMinutes();
   let autoT = date + "  " + time;
+  // const s = '01-01-1970 00:03:44';
+ // const  autoT = new Date(s);
 
   // Add new Record fields
   const [newRec, setnewRecord] = useState({ id: '', cuntry_name: '', unit_name: '', unit_sign: '', unit_titlecode: '', autodatetime: '' })
@@ -94,8 +96,10 @@ const Table = () => {
 
   //Search
   const Search = async (e) => {
-    setSearchid({ id: e.target.value })
-    let a = dfilter.filter((item) => item.currency_units_id == e.target.value);
+    setSearchid({ name: e.target.value })
+    var a = dfilter.includes(e.target.value);
+    console.log(a);
+    // let a = dfilter.filter((item) => item.currency_units_id == e.target.value);
     ((e.target.value === '') || (a.length === 0)) ? setgetApi(dfilter) : setgetApi(a);
 
 
@@ -149,7 +153,7 @@ const Table = () => {
 
       <div className="mx-2" style={{ textAlign: 'left' }}> <h4 >Bank names</h4>
         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={Add}><i className="fa fa-plus"></i> Add new record</button>
-        <div style={{ float: 'right' }}><label className="align-right" >  Search: </label><input type="text" name="id" value={searchId.id} onChange={Search} /></div>
+        <div style={{ float: 'right' }}><label className="align-right" >  Search: </label><input type="text" name="id" value={searchId.name} onChange={Search} /></div>
         <br /><br />
       </div>
       <table className="table table-striped">
@@ -157,16 +161,18 @@ const Table = () => {
           <tr >
             {/* Table Header */}
             <th scope="col">Sr.</th>
-            <th scope="col">Bank Name</th>
-            <th scope="col">Branch City</th>
+            <th scope="col">Country Name</th>
+            <th scope="col">Unit Name</th>
             <th scope="col">Action</th>
+            <th scope="col">Add/Edit time</th>
+            <th scope="col">Unit sign</th>
           </tr>
         </thead>
         <tbody>
           {/* getting API data in table  using map */}
           {getApi ? getApi.map((data, id) => {
             return (<tr key={id}>
-              <td>{data.currency_units_id}</td>
+              <td>{id+1}</td>
               <td>{data.cuntry_name}</td>
               <td>{data.unit_name}</td>
               <td >
@@ -187,7 +193,7 @@ const Table = () => {
                         Are you sure you want to delete the record?
                       </div>
                       <div className="modal-footer">
-                        <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={() => onDelete()}>Yes</button>
+                        <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={() => onDelete()}>Delete</button>
                       </div>
                     </div>
                   </div>
@@ -250,16 +256,17 @@ const Table = () => {
                         </form>
                       </div>
                       <div className="modal-footer">
-                        <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={() => {
+                        <button type="button" className="btn btn-warning" data-bs-dismiss="modal" onClick={() => {
                           EditApi()
 
-                        }}>Yes</button>
+                        }}>Edit</button>
                       </div>
                     </div>
                   </div>
                 </div>
 
               </td>
+              <td>{data.autodatetime}</td>
             </tr>)
           }) : <div>Data not found</div>}
 
