@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 
 const Table = () => {
-  const [getApi, setgetApi] = useState();
-  const [delid, setDelid] = useState({ id: ' ' });
+  const [getApi, setgetApi] = useState([]);
+  const [dfilter, setfilter] = useState([]);
+  const [delid, setDelid] = useState({ id: '' });
+  const [searchId, setSearchid] = useState({ id: '' });
   //Add new Record fields
   const [newRec, setnewRecord] = useState({ id: '', cuntry_name: '', unit_name: '', unit_sign: '', unit_titlecode: '', autodatetime: '' })
   //Edit Record fields
@@ -11,18 +13,23 @@ const Table = () => {
 
   //POST Method
   const AddRecord = () => {
+    const{cuntry_name, unit_name}=newRec;
+    if(cuntry_name =='' ||unit_name ==''){
+      alert("Enter values");
+    }
+    else{
     fetch(`https://countydevapiaws.genial365.com:443/api/currency_units`, {
       headers: {
         'Content-Type': 'application/json',
       }, method: 'POST', body: JSON.stringify(newRec)
     })
       .then((response) => response.json())
-      .then((actualData) => {
+      .then(() => {
         fetchAlldata()
         setnewRecord({ cuntry_name: '', unit_name: '' })
       })
 
-
+    }
   }
 
   // GET Api method
@@ -30,7 +37,10 @@ const Table = () => {
 
     fetch(`https://countydevapiaws.genial365.com:443/api/currency_units`, { method: 'GET' })
       .then((response) => response.json())
-      .then((actualData) => setgetApi(actualData));
+      .then((actualData) => {
+        setgetApi(actualData);
+        setfilter(actualData)
+      });
   }
   //Handling Input Fiels of Add new record
   const Add = (e) => {
@@ -49,32 +59,30 @@ const Table = () => {
   const Delid = (id) => {
     setDelid({ id: id })
   }
-  
+
   //Edit method (PUT)
 
   const EditApi = async () => {
-    const { currency_units_id} = editModal
+    const { currency_units_id } = editModal
     await fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${currency_units_id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-      }, body: JSON.stringify( editModal ) ,
+      }, body: JSON.stringify(editModal),
     }).then((response) => response).then((getdd) => {
-      console.log(getdd);
       fetchAlldata()
     })
 
   }
 
-  //Searche
-  const Search = (e) => {
+  //Search
+  const Search = async (e) => {
+    setSearchid({ id: e.target.value })
+    console.log(dfilter, e.target.value);
+    let a = dfilter.filter((item) => item.currency_units_id == e.target.value);
+    ((e.target.value === '') || (a.length === 0)) ? setgetApi(dfilter) : setgetApi(a);
 
- getApi?.map(item=>{item.filter(i=>i.currency_units_id==e)})
-    
-    // fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${e}`,)
-    //   .then((response) => response.json())
-    //   .then((actualData) => setgetApi(actualData));
-    // console.log(res.json);
+
   }
 
   //DELETE Data
@@ -83,6 +91,7 @@ const Table = () => {
     const res = await fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${id}`, { method: 'DELETE' })
     await res.json();
     fetchAlldata()
+   
 
   }
   //UseEffect to call GetApi method
@@ -124,7 +133,7 @@ const Table = () => {
 
       <div className="mx-2" style={{ textAlign: 'left' }}> <h4 >Bank names</h4>
         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={Add}><i className="fa fa-plus"></i> Add new record</button>
-        <div style={{ float: 'right' }}><label className="align-right" >  Search: </label><input type="text" name="id" value={delid.id} onChange={Search} /></div>
+        <div style={{ float: 'right' }}><label className="align-right" >  Search: </label><input type="text" name="id" value={searchId.id} onChange={Search} /></div>
         <br /><br />
       </div>
       <table className="table table-striped ">
@@ -181,7 +190,7 @@ const Table = () => {
                       }
                       )
                     }}
-                      >
+                  >
                   </i>
                 </button>
 
@@ -230,7 +239,7 @@ const Table = () => {
                       <div className="modal-footer">
                         <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={() => {
                           EditApi()
-                    
+
                         }}>Yes</button>
                       </div>
                     </div>
