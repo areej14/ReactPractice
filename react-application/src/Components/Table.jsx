@@ -8,7 +8,8 @@ const Table = () => {
   const [searchId, setSearchid] = useState({ id: '' });
   //getting date and time
   const d = new Date();
-  let date = d.getUTCFullYear() + "-" + d.getUTCMonth() + "-" + d.getUTCDate();
+  let month = d.getUTCMonth() + 1
+  let date = d.getUTCFullYear() + "-" + month + "-" + d.getUTCDate();
   var hours = d.getHours();
   hours = (hours % 12) || 12;
   let time = hours + ":" + d.getMinutes();
@@ -151,9 +152,9 @@ const Table = () => {
         <div style={{ float: 'right' }}><label className="align-right" >  Search: </label><input type="text" name="id" value={searchId.id} onChange={Search} /></div>
         <br /><br />
       </div>
-      <table className="table table-striped ">
+      <table className="table table-striped">
         <thead>
-          <tr>
+          <tr >
             {/* Table Header */}
             <th scope="col">Sr.</th>
             <th scope="col">Bank Name</th>
@@ -168,10 +169,10 @@ const Table = () => {
               <td>{data.currency_units_id}</td>
               <td>{data.cuntry_name}</td>
               <td>{data.unit_name}</td>
-              <td>
+              <td >
                 {/* Delete button */}
                 <button type="button" className="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  <i data-bs-toggle="modal" data-bs-target="#exampleModal" className="fa fa-trash-o btn " style={{ color: 'red' }} onClick={() => Delid(data.currency_units_id)} >
+                  <i data-bs-toggle="modal" data-bs-target="#exampleModal" className="fa fa-trash-o " style={{ color: 'red' }} onClick={() => Delid(data.currency_units_id)} >
                   </i>
                 </button>
                 {/* Delete modal */}
@@ -192,22 +193,18 @@ const Table = () => {
                   </div>
                 </div>
                 {/* Edit button */}
-                <button type="button" className="btn " data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                  <i className="fa fa-pencil-square-o btn" style={{ color: '#4E69F0' }}
-                    onClick={() => {
-                      seteditModal({
-                        currency_units_id: data.currency_units_id,
-                        cuntry_name: data.cuntry_name,
-                        unit_name: data.unit_name,
-                        autodatetime: autoT,
-
-
-
-                      }
-                      )
-                    }}
-                  >
-                  </i>
+                <button type="button" className="btn " data-bs-toggle="modal" data-bs-target="#exampleModal1"><i className="fa fa-pencil-square-o " style={{ color: '#4E69F0' }}
+                  onClick={() => {
+                    seteditModal({
+                      currency_units_id: data.currency_units_id,
+                      cuntry_name: data.cuntry_name,
+                      unit_name: data.unit_name,
+                      autodatetime: autoT,
+                    }
+                    )
+                  }}
+                >
+                </i>
                 </button>
 
                 {/* Edit Modal */}
