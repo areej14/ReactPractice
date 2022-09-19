@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 
 const Table = () => {
   const [getApi, setgetApi] = useState();
-  const [delid,setDelid]=useState({id:' '});
-   //Add new Record fields
-  const [newRec, setnewRecord] = useState({ id: '', cuntry_name: '', unit_name: '',unit_sign:'',unit_titlecode:'',autodatetime:''})
-   //Edit Record fields
-  const [editModal, seteditModal] = useState({ id: '', cuntry_name: '', unit_name: '',unit_sign:'',unit_titlecode:'',autodatetime:''})
+  const [delid, setDelid] = useState({ id: ' ' });
+  //Add new Record fields
+  const [newRec, setnewRecord] = useState({ id: '', cuntry_name: '', unit_name: '', unit_sign: '', unit_titlecode: '', autodatetime: '' })
+  //Edit Record fields
+  const [editModal, seteditModal] = useState({ currency_units_id: '', cuntry_name: '', unit_name: '', unit_sign: '', unit_titlecode: '', autodatetime: '' })
 
   //POST Method
   const AddRecord = () => {
@@ -44,88 +44,42 @@ const Table = () => {
         [name]: value
       }
     });
-}
-//getting id of data to be deleted
-const Delid=(id)=>{
-  setDelid({id:id})
-}
-//confirming edit modal fields
-  const Edit= (id,countryName,unitName)=>{
-    seteditModal({id:id,cuntry_name:countryName,unit_name:unitName})
   }
+  //getting id of data to be deleted
+  const Delid = (id) => {
+    setDelid({ id: id })
+  }
+  
   //Edit method (PUT)
-  const EditApi= async (id)=>{
-  //   let id= editModal.id
-  //   // from net 
-  //   const requestOptions = {
-  //     method: 'PUT',
-  //     headers: { 'Content-Type': 'application/json','Access-Control-Allow-Origin': '*' },
-  //     body: JSON.stringify(editModal)
-  // };
-  // fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/ ${id}`, requestOptions)
-  //     .then(async response => {
-  //         const isJson = response.headers.get('content-type')?.includes('application/json');
-  //         const data = isJson && await response.json();
-  
-  //         // check for error response
-  //         if (!response.ok) {
-  //             // get error message from body or default to response status
-  //             const error = (data && data.message) || response.status;
-  //             return Promise.reject(error);
-  //         }
-  
-  //         fetchAlldata()
-  //     })
-  //     .catch(error => {
-  //       console.log(editModal);
-  //        console.log( `Error: ${error}`);
-  //         console.error('There was an error!', error);
-  //     });
-    // enddddddddddddd
-    // let i= editModal.id
-    console.log("APIid",id);
-   await fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${id}`, {method: 'PUT',
-   cache: 'no-cache',
-   credentials: 'same-origin',
-   redirect: 'follow',
-   referrerPolicy: 'no-referrer',
+
+  const EditApi = async () => {
+    const { currency_units_id} = editModal
+    await fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${currency_units_id}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      }, body: (editModal)
-    }).then((response) => response.json())
-    .then((actualData) => {
-     fetchAlldata()
-    
+      }, body: JSON.stringify( editModal ) ,
+    }).then((response) => response).then((getdd) => {
+      console.log(getdd);
+      fetchAlldata()
     })
-  }
-  // updating edit modal fields
-  const edithandle=(e)=>{
-   
-    seteditModal((preVal) => {
-    
-      const { name, value } = e.target;
 
-      return {
-        ...preVal,
-        [name]: value
-      }
-    });
   }
+
   //Searche
-  const Search=(e) => {
-   
+  const Search = (e) => {
+
+ getApi?.map(item=>{item.filter(i=>i.currency_units_id==e)})
     
-    setDelid({id:e.target.value})
-    fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${delid.id}`, )
-    .then((response) => response.json())
-      .then((actualData) => setgetApi(actualData));
-  // console.log(res.json);
-}
-  
+    // fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${e}`,)
+    //   .then((response) => response.json())
+    //   .then((actualData) => setgetApi(actualData));
+    // console.log(res.json);
+  }
+
   //DELETE Data
   const onDelete = async () => {
-    let id= delid.id;
+    let id = delid.id;
     const res = await fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${id}`, { method: 'DELETE' })
     await res.json();
     fetchAlldata()
@@ -170,7 +124,7 @@ const Delid=(id)=>{
 
       <div className="mx-2" style={{ textAlign: 'left' }}> <h4 >Bank names</h4>
         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={Add}><i className="fa fa-plus"></i> Add new record</button>
-     <div style={{float: 'right'}}><label className="align-right" >  Search: </label><input type="text" name="id" value={delid.id} onChange={Search} /></div>
+        <div style={{ float: 'right' }}><label className="align-right" >  Search: </label><input type="text" name="id" value={delid.id} onChange={Search} /></div>
         <br /><br />
       </div>
       <table className="table table-striped ">
@@ -184,16 +138,16 @@ const Delid=(id)=>{
           </tr>
         </thead>
         <tbody>
-          {/* getting API data in table  using map */ }
-          {getApi?getApi.map((data, id) => {
-           return (<tr key={id}>
-              <td>{id + 1}</td>
+          {/* getting API data in table  using map */}
+          {getApi ? getApi.map((data, id) => {
+            return (<tr key={id}>
+              <td>{data.currency_units_id}</td>
               <td>{data.cuntry_name}</td>
               <td>{data.unit_name}</td>
               <td>
                 {/* Delete button */}
                 <button type="button" className="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  <i data-bs-toggle="modal" data-bs-target="#exampleModal" className="fa fa-trash-o btn " style={{ color: 'red' }}  onClick={() => Delid(data.currency_units_id)} >
+                  <i data-bs-toggle="modal" data-bs-target="#exampleModal" className="fa fa-trash-o btn " style={{ color: 'red' }} onClick={() => Delid(data.currency_units_id)} >
                   </i>
                 </button>
                 {/* Delete modal */}
@@ -215,13 +169,23 @@ const Delid=(id)=>{
                 </div>
                 {/* Edit button */}
                 <button type="button" className="btn " data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                  <i className="fa fa-pencil-square-o btn" style={{ color: '#4E69F0' }} 
-                   onClick={()=>Edit(data.currency_units_id,data.cuntry_name , data.unit_name)}
-                   >
-                     </i>
+                  <i className="fa fa-pencil-square-o btn" style={{ color: '#4E69F0' }}
+                    onClick={() => {
+                      seteditModal({
+                        currency_units_id: data.currency_units_id,
+                        cuntry_name: data.cuntry_name,
+                        unit_name: data.unit_name,
+
+
+
+                      }
+                      )
+                    }}
+                      >
+                  </i>
                 </button>
-                
-                 {/* Edit Modal */}
+
+                {/* Edit Modal */}
                 <div className="modal fade" id="exampleModal1" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div className="modal-dialog">
                     <div className="modal-content">
@@ -233,7 +197,16 @@ const Delid=(id)=>{
                         <form>
                           <div className="mb-2">
                             <label htmlFor="recipient-name" >Enter Bank Name:</label>
-                            <input type="text" className="form-control" name="cuntry_name" id="recipient-name" onChange={edithandle} value={editModal.cuntry_name}  />
+                            <input type="text" className="form-control" name="cuntry_name" id="recipient-name" value={editModal.cuntry_name} onChange={((e) => {
+                              seteditModal(
+                                {
+                                  ...editModal,
+                                  cuntry_name: e.target.value
+                                }
+                              )
+
+
+                            })} />
 
 
                           </div>
@@ -241,12 +214,24 @@ const Delid=(id)=>{
                             <label htmlFor="message-text" >Enter Branch City:</label>
 
 
-                            <input type="text" className="form-control" id="recipient-city" name="unit_name" onChange={edithandle} value={editModal.unit_name} />
+                            <input type="text" className="form-control" id="recipient-city" name="unit_name" value={editModal.unit_name} onChange={((e) => {
+                              seteditModal(
+                                {
+                                  ...editModal,
+                                  unit_name: e.target.value
+                                }
+                              )
+
+
+                            })} />
                           </div>
                         </form>
                       </div>
                       <div className="modal-footer">
-                        <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={EditApi(data.currency_units_id)}>Yes</button>
+                        <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={() => {
+                          EditApi()
+                    
+                        }}>Yes</button>
                       </div>
                     </div>
                   </div>
@@ -254,7 +239,7 @@ const Delid=(id)=>{
 
               </td>
             </tr>)
-          }):<div>Data not found</div>}
+          }) : <div>Data not found</div>}
 
         </tbody>
 
