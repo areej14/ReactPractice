@@ -97,10 +97,11 @@ const Table = () => {
   //Search
   const Search = async (e) => {
     setSearchid({ name: e.target.value })
-    var a = dfilter.includes(e.target.value);
-    console.log(a);
+    // var a = dfilter.includes(e.target.value);
+    setgetApi(dfilter.filter((item) => (item.cuntry_name.toLowerCase().includes(e.target.value.toLowerCase()))));
+    // console.log(a);
     // let a = dfilter.filter((item) => item.currency_units_id == e.target.value);
-    ((e.target.value === '') || (a.length === 0)) ? setgetApi(dfilter) : setgetApi(a);
+    // ((e.target.value === '') || (a.length === 0)) ? setgetApi(dfilter) : setgetApi(a);
 
 
   }
@@ -121,11 +122,11 @@ const Table = () => {
   return (
     <>
       {/* Add new record modal    */}
-      <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="staticBackdropLabel">Enter new Record</h5>
+      <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+              <h5 className="modal-title" id="#exampleModal3">Enter new Record</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -152,8 +153,8 @@ const Table = () => {
 
 
       <div className="mx-2" style={{ textAlign: 'left' }}> <h4 >Bank names</h4>
-        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={Add}><i className="fa fa-plus"></i> Add new record</button>
-        <div style={{ float: 'right' }}><label className="align-right" >  Search: </label><input type="text" name="id" value={searchId.name} onChange={Search} /></div>
+        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3" onClick={Add}><i className="fa fa-plus"></i> Add new record</button>
+        <div style={{ float: 'right' }}><label className="align-right" >  Search: </label><input type="text" name="id" value={searchId.name} onChange={Search} placeholder=" -- by Country name--" /></div>
         <br /><br />
       </div>
       <table className="table table-striped">
