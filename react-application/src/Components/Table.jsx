@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import Moment from 'moment';
 
 const Table = () => {
   const [getApi, setgetApi] = useState([]);
@@ -8,35 +8,22 @@ const Table = () => {
   const [searchId, setSearchid] = useState({ id: '' });
   const [flags, setFlags] = useState({ addflag: false, editflag: false, df: false });
   // getting date and time
-  //  backend accepts
-  //   const d = new Date();
-  //   let month = d.getUTCMonth() + 1
-  // //   d.getUTCFullYear() +
-  //   let date = d.getUTCFullYear()  + "-" + month + "-" +  d.getUTCDate();
-  //   var hours = d.getHours();
-  //   hours = (hours % 12) || 12;
-  //   let time = hours + ":" + d.getMinutes();
-  //   let autoT = date + "  " + time;
-  ///VS
-  // i want
-  function addZero(i) {
-    if (i < 10) {i = "0" + i}
-    return i;
-  }
-  const date = new Date();
-  // 2009-11-10
-  const month = date.toLocaleString('default', { month: 'short' });
-  var hours =date.getHours();
-  hours =  addZero((hours % 12) || 12);
-  let ap = ((hours % 12) || 12) ? "PM" : "AM";
-  const autoT = date.getDate() + " " + month + " " + date.getFullYear() + "," + hours + ":" + addZero(date.getMinutes()) + ap;
-  // console.log(a);
+ 
+ 
+  const d = new Date();
+  let month = d.getUTCMonth() + 1
+//   d.getUTCFullYear() +
+  let date = d.getUTCFullYear()  + "-" + month + "-" +  d.getUTCDate();
+  let time =d.getHours()+ ":" + d.getMinutes();
+  let autoT = date + "  " + time;
+ 
+ 
 
-  console.log(autoT);
+ 
   // Add new Record fields
-  const [newRec, setnewRecord] = useState({ id: '', cuntry_name: '', unit_name: '', unit_sign: '', autodatetime: autoT })
+  const [newRec, setnewRecord] = useState({ id: '', cuntry_name: '', unit_name: '', unit_sign: '', autodatetime: '' })
   //Edit Record fields
-  const [editModal, seteditModal] = useState({ currency_units_id: '', cuntry_name: '', unit_name: '', unit_sign: '',  autodatetime:autoT })
+  const [editModal, seteditModal] = useState({ currency_units_id: '', cuntry_name: '', unit_name: '', unit_sign: '',  autodatetime:'' })
 
   //POST Method
 
@@ -57,10 +44,6 @@ const Table = () => {
 
 
   const AddRecord = () => {
-
-    console.log(newRec);
-
-
     const { cuntry_name, unit_name,unit_sign } = newRec;
     // console.log(autodatetime);
     if (cuntry_name == '' || unit_name == ''|| unit_sign=='') {
@@ -97,7 +80,6 @@ const Table = () => {
   }
   //Handling Input Fiels of Add new record
   const Add = (e) => {
-    console.log("add me autoT", autoT);
     e.preventDefault();
     // updateTime()
     setnewRecord((preVal) => {
@@ -126,7 +108,7 @@ const Table = () => {
       headers: {
         'Content-Type': 'application/json',
       }, body: JSON.stringify(editModal),
-    }).then((response) => response).then((getdd) => {
+    }).then((response) => response).then(() => {
       fetchAlldata()
     })
     setFlags({ editflag: true })
@@ -223,7 +205,7 @@ const Table = () => {
               <td>{data.cuntry_name}</td>
               <td>{data.unit_name}</td>
               <td>{data.unit_sign}</td>
-              <td>{autoT}</td>
+              <td>{ Moment(data.autodatetime).format('DD-MMM-YYYY , hh:mm A')}</td>
               <td >
                 {/* Delete button */}
                 <button type="button" className="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
