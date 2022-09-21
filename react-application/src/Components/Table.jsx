@@ -6,42 +6,80 @@ const Table = () => {
   const [dfilter, setfilter] = useState([]);
   const [delid, setDelid] = useState({ name: '' });
   const [searchId, setSearchid] = useState({ id: '' });
+  const [flags, setFlags] = useState({ addflag: false, editflag: false, df: false });
   // getting date and time
-  const d = new Date();
-  let month = d.getUTCMonth() + 1
-  let date = d.getUTCFullYear() + "-" + month + "-" + d.getUTCDate();
-  var hours = d.getHours();
-  hours = (hours % 12) || 12;
-  let time = hours + ":" + d.getMinutes();
-  let autoT = date + "  " + time;
-  // const s = '01-01-1970 00:03:44';
- // const  autoT = new Date(s);
+  //  backend accepts
+  //   const d = new Date();
+  //   let month = d.getUTCMonth() + 1
+  // //   d.getUTCFullYear() +
+  //   let date = d.getUTCFullYear()  + "-" + month + "-" +  d.getUTCDate();
+  //   var hours = d.getHours();
+  //   hours = (hours % 12) || 12;
+  //   let time = hours + ":" + d.getMinutes();
+  //   let autoT = date + "  " + time;
+  ///VS
+  // i want
+  function addZero(i) {
+    if (i < 10) {i = "0" + i}
+    return i;
+  }
+  const date = new Date();
+  // 2009-11-10
+  const month = date.toLocaleString('default', { month: 'short' });
+  var hours =date.getHours();
+  hours =  addZero((hours % 12) || 12);
+  let ap = ((hours % 12) || 12) ? "PM" : "AM";
+  const autoT = date.getDate() + " " + month + " " + date.getFullYear() + "," + hours + ":" + addZero(date.getMinutes()) + ap;
+  // console.log(a);
 
+  console.log(autoT);
   // Add new Record fields
-  const [newRec, setnewRecord] = useState({ id: '', cuntry_name: '', unit_name: '', unit_sign: '', unit_titlecode: '', autodatetime: '' })
+  const [newRec, setnewRecord] = useState({ id: '', cuntry_name: '', unit_name: '', unit_sign: '', autodatetime: autoT })
   //Edit Record fields
-  const [editModal, seteditModal] = useState({ currency_units_id: '', cuntry_name: '', unit_name: '', unit_sign: '', unit_titlecode: '', autodatetime: '' })
+  const [editModal, seteditModal] = useState({ currency_units_id: '', cuntry_name: '', unit_name: '', unit_sign: '',  autodatetime:autoT })
 
   //POST Method
+
+
+  useEffect(() => {
+    const timeId = setTimeout(() => {
+      // After 3 seconds set the show value to false
+      setFlags({ addflag: false, df: false, editflag: false })
+    }, 2000)
+
+    return () => {
+      clearTimeout(timeId)
+    }
+  }, [flags]);
+
+
+
 
 
   const AddRecord = () => {
 
     console.log(newRec);
-    const { cuntry_name, unit_name } = newRec;
-    if (cuntry_name == '' || unit_name == '') {
+
+
+    const { cuntry_name, unit_name,unit_sign } = newRec;
+    // console.log(autodatetime);
+    if (cuntry_name == '' || unit_name == ''|| unit_sign=='') {
+
       alert("Enter values");
     }
     else {
+      setFlags({ addflag: true })
+
       fetch(`https://countydevapiaws.genial365.com:443/api/currency_units`, {
         headers: {
           'Content-Type': 'application/json',
+          // { id: newRec.id, cuntry_name: newRec.cuntry_name, unit_name: newRec.unit_name, unit_sign: newRec.unit_sign, unit_titlecode: newRec.unit_titlecode, autodatetime: autoT }
         }, method: 'POST', body: JSON.stringify(newRec)
       })
         .then((response) => response.json())
         .then(() => {
           fetchAlldata()
-          setnewRecord({ cuntry_name: '', unit_name: '', autodatetime: '' })
+          setnewRecord({ cuntry_name: '', unit_name: '',unit_sign:'' })
         })
 
     }
@@ -59,6 +97,7 @@ const Table = () => {
   }
   //Handling Input Fiels of Add new record
   const Add = (e) => {
+    console.log("add me autoT", autoT);
     e.preventDefault();
     // updateTime()
     setnewRecord((preVal) => {
@@ -90,6 +129,7 @@ const Table = () => {
     }).then((response) => response).then((getdd) => {
       fetchAlldata()
     })
+    setFlags({ editflag: true })
 
 
   }
@@ -97,22 +137,17 @@ const Table = () => {
   //Search
   const Search = async (e) => {
     setSearchid({ name: e.target.value })
-    // var a = dfilter.includes(e.target.value);
     setgetApi(dfilter.filter((item) => (item.cuntry_name.toLowerCase().includes(e.target.value.toLowerCase()))));
-    // console.log(a);
-    // let a = dfilter.filter((item) => item.currency_units_id == e.target.value);
-    // ((e.target.value === '') || (a.length === 0)) ? setgetApi(dfilter) : setgetApi(a);
-
 
   }
 
   //DELETE Data
   const onDelete = async () => {
+    setFlags({ df: true })
     let id = delid.id;
     const res = await fetch(`https://countydevapiaws.genial365.com:443/api/currency_units/${id}`, { method: 'DELETE' })
     await res.json();
     fetchAlldata()
-
 
   }
   //UseEffect to call GetApi method
@@ -121,48 +156,51 @@ const Table = () => {
   }, []);
   return (
     <>
-    <div className="alert alert-primary d-flex align-items-center" role="alert">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-  </svg>
-  <div>
-    An example alert with an icon
-  </div>
-</div>
+    {/* alert */}
+      {(flags.addflag) || (flags.df) || (flags.editflag) ? <div className="d-flex align-items-center justify-content-center">
+        <div className="alert my-1 alert-primary d-flex align-items-center "  role="alert" style={{ width: '25%' }}>
+
+          <div >
+            {(flags.addflag) ? <h6>Record added</h6> : (flags.df) ? <h6 >Record deleted</h6> : (flags.editflag) ? <h6>Record edited</h6> : null}
+          </div>
+        </div>
+      </div> : null}
       {/* Add new record modal    */}
       <div className="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div className="modal-dialog">
-    <div className="modal-content">
-      <div className="modal-header">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
               <h5 className="modal-title" id="#exampleModal3">Enter new Record</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div className="modal-body">
               <form>
-                <div className="mb-2">
-                  <label htmlFor="recipient-name" >Enter Bank Name:</label>
+                <div className="mb-1">
+                  <label htmlFor="recipient-name" >Country Name:</label>
                   <input type="text" className="form-control" onChange={Add} name="cuntry_name" id="recipient-name" value={newRec.cuntry_name} />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="message-text" >Enter Branch City:</label>
+               
+                  <label htmlFor="message-text" >Unit Name:</label>
                   <input type="text" onChange={Add} className="form-control" id="recipient-city" value={newRec.unit_name} name="unit_name" />
+                
+                  <label htmlFor="message-text" >Unit Sign:</label>
+                  <input type="text" onChange={Add} className="form-control" id="recipient-city" value={newRec.unit_sign} name="unit_sign" />
                 </div>
               </form>
             </div>
 
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary" onClick={AddRecord}>Submit</button>
+              <button type="button" className="btn btn-success"  data-bs-dismiss="modal" onClick={AddRecord}>ADD</button>
             </div>
           </div>
         </div>
       </div>
 
 
-      <div className="mx-2" style={{ textAlign: 'left' }}> <h4 >Bank names</h4>
+      <div className="mx-2" style={{ textAlign: 'left' }}> <h3 style={{ fontFamily: 'san-serif' }} >Currency Form</h3>
         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3" onClick={Add}><i className="fa fa-plus"></i> Add new record</button>
-        <div style={{ float: 'right' }}><label className="align-right" >  Search: </label><input type="text" name="id" value={searchId.name} onChange={Search} placeholder=" -- by Country name--" /></div>
+        <div style={{ float: 'right' }}><label className="align-right" > <b className="mx-2"> Search: </b> </label><input type="text" name="id" value={searchId.name} onChange={Search} placeholder=" -- by country name--" /></div>
         <br /><br />
       </div>
       <table className="table table-striped">
@@ -172,18 +210,20 @@ const Table = () => {
             <th scope="col">Sr.</th>
             <th scope="col">Country Name</th>
             <th scope="col">Unit Name</th>
-            <th scope="col">Action</th>
+            <th scope="col">Unit Sign</th>
             <th scope="col">Add/Edit time</th>
-            <th scope="col">Unit sign</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
           {/* getting API data in table  using map */}
           {getApi ? getApi.map((data, id) => {
             return (<tr key={id}>
-              <td>{id+1}</td>
+              <td>{id + 1}</td>
               <td>{data.cuntry_name}</td>
               <td>{data.unit_name}</td>
+              <td>{data.unit_sign}</td>
+              <td>{autoT}</td>
               <td >
                 {/* Delete button */}
                 <button type="button" className="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -214,6 +254,7 @@ const Table = () => {
                       currency_units_id: data.currency_units_id,
                       cuntry_name: data.cuntry_name,
                       unit_name: data.unit_name,
+                      unit_sign: data.unit_sign,
                       autodatetime: autoT,
                     }
                     )
@@ -232,8 +273,8 @@ const Table = () => {
                       </div>
                       <div className="modal-body">
                         <form>
-                          <div className="mb-2">
-                            <label htmlFor="recipient-name" >Enter Bank Name:</label>
+                          <div className="mb-1">
+                            <label htmlFor="recipient-name" >Country Name:</label>
                             <input type="text" className="form-control" name="cuntry_name" id="recipient-name" value={editModal.cuntry_name} onChange={((e) => {
                               seteditModal(
                                 {
@@ -247,8 +288,8 @@ const Table = () => {
 
 
                           </div>
-                          <div className="mb-3">
-                            <label htmlFor="message-text" >Enter Branch City:</label>
+                          <div className="mb-1">
+                            <label htmlFor="message-text" >Unit City:</label>
 
 
                             <input type="text" className="form-control" id="recipient-city" name="unit_name" value={editModal.unit_name} onChange={((e) => {
@@ -262,6 +303,19 @@ const Table = () => {
 
                             })} />
                           </div>
+                          <div className="mb-1">
+                  <label htmlFor="message-text" >Unit Sign:</label>
+                  <input type="text" className="form-control" id="recipient-city" value={editModal.unit_sign} name="unit_sign" onChange={((e) => {
+                              seteditModal(
+                                {
+                                  ...editModal,
+                                  unit_sign: e.target.value
+                                }
+                              )
+
+
+                            })}/>
+                </div>
                         </form>
                       </div>
                       <div className="modal-footer">
@@ -275,7 +329,7 @@ const Table = () => {
                 </div>
 
               </td>
-              <td>{data.autodatetime}</td>
+
             </tr>)
           }) : <div>Data not found</div>}
 
