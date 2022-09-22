@@ -197,7 +197,7 @@ const Table = () => {
         </thead>
         <tbody>
           {/* getting API data in table  using map */}
-          {getApi ? getApi.map((data, id) => {
+          { getApi?.map((data, id) => {
             return (<tr key={id}>
               <td>{id + 1}</td>
               <td>{data.cuntry_name}</td>
@@ -206,10 +206,10 @@ const Table = () => {
               <td>{ Moment(data.autodatetime).format('DD-MMM-YYYY , hh:mm A')}</td>
               <td >
                 {/* Delete button */}
-                <button type="button" className="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  <i data-bs-toggle="modal" data-bs-target="#exampleModal" className="fa fa-trash-o " style={{ color: 'red' }} onClick={() => Delid(data.currency_units_id)} >
+              
+                  <i data-bs-toggle="modal" data-bs-target="#exampleModal"  className="fa fa-trash-o btn " style={{ color: 'red' }} onClick={() => Delid(data.currency_units_id)} >
                   </i>
-                </button>
+              
                 {/* Delete modal */}
                 <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div className="modal-dialog">
@@ -228,7 +228,7 @@ const Table = () => {
                   </div>
                 </div>
                 {/* Edit button */}
-                <button type="button" className="btn " data-bs-toggle="modal" data-bs-target="#exampleModal1"><i className="fa fa-pencil-square-o " style={{ color: '#4E69F0' }}
+                <i data-bs-toggle="modal" data-bs-target="#exampleModal1" className="fa fa-pencil-square-o btn" style={{ color: '#4E69F0' }}
                   onClick={() => {
                     seteditModal({
                       currency_units_id: data.currency_units_id,
@@ -241,7 +241,7 @@ const Table = () => {
                   }}
                 >
                 </i>
-                </button>
+               
 
                 {/* Edit Modal */}
                 <div className="modal fade" id="exampleModal1" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -311,7 +311,7 @@ const Table = () => {
               </td>
 
             </tr>)
-          }) : <div>Data not found</div>}
+          }) }
 
         </tbody>
 
