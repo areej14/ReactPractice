@@ -12,7 +12,6 @@ const Table = () => {
  
   const d = new Date();
   let month = d.getUTCMonth() + 1
-//   d.getUTCFullYear() +
   let date = d.getUTCFullYear()  + "-" + month + "-" +  d.getUTCDate();
   let time =d.getHours()+ ":" + d.getMinutes();
   let autoT = date + "  " + time;
@@ -56,7 +55,6 @@ const Table = () => {
       fetch(`https://countydevapiaws.genial365.com:443/api/currency_units`, {
         headers: {
           'Content-Type': 'application/json',
-          // { id: newRec.id, cuntry_name: newRec.cuntry_name, unit_name: newRec.unit_name, unit_sign: newRec.unit_sign, unit_titlecode: newRec.unit_titlecode, autodatetime: autoT }
         }, method: 'POST', body: JSON.stringify(newRec)
       })
         .then((response) => response.json())
@@ -139,7 +137,7 @@ const Table = () => {
   return (
     <>
     {/* alert */}
-      {(flags.addflag) || (flags.df) || (flags.editflag) ? <div className="d-flex align-items-center justify-content-center">
+      {(flags.addflag) || (flags.df) || (flags.editflag) ? <div className="d-flex fixed-top align-items-center justify-content-center">
         <div className="alert my-1 alert-primary d-flex align-items-center "  role="alert" style={{ width: '25%' }}>
 
           <div >
