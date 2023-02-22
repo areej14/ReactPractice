@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+body{
+    background-color: antiquewhite;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+nav{
+    font-family: 'Ubuntu Mono', monospace;
+}
+nav ul {
+    display: flex;
+    list-style-type: none;
+    height: 89px;
+}
+.brand img{
+    width:44px;
+
+}
